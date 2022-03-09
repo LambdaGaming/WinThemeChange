@@ -6,12 +6,18 @@ const string localMachine = @"HKEY_LOCAL_MACHINE\";
 const string personalization = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
 bool IsAdmin() => new WindowsPrincipal( WindowsIdentity.GetCurrent() ).IsInRole( WindowsBuiltInRole.Administrator );
 
+Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine( "This program will allow you to customize an unactivated version of Windows 10 or 11 as if it were activated." );
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine( "WARNING: This program makes changes to your registry. Please consider making a backup before proceeding." );
+Console.WriteLine( "The creator of this software is not responsible for any damage done as a result of using this software.\n" );
+Console.ResetColor();
+
 Console.WriteLine( "Initializing..." );
 if ( !IsAdmin() )
 {
 	Console.WriteLine( "ERROR: Please restart the app with administrator privileges." );
-	Console.ReadLine();
+	Console.ReadKey();
 	return;
 }
 
@@ -45,7 +51,7 @@ else
 	Registry.SetValue( personalization, "AppsUseLightTheme", 1 );
 }
 
-Console.WriteLine( "Would you like to enable transparency effects?" );
+Console.WriteLine( "Would you like to enable transparency effects? (y/n)" );
 if ( Console.ReadKey().Key == ConsoleKey.Y )
 {
 	Console.WriteLine( "Enabling transparency effects..." );
@@ -57,5 +63,7 @@ else
 	Registry.SetValue( personalization, "EnableTransparency", 0 );
 }
 
-Console.WriteLine( "Finished! Press any key to continue..." );
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine( "Finished! Most changes should take effect immediately, but restarting your system is still recommended." );
+Console.WriteLine( "Press any key to continue..." );
 Console.ReadKey();
