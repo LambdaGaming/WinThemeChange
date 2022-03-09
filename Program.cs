@@ -1,8 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Security.Principal;
 
-#pragma warning disable CA1416 // Validate platform compatibility
-
 const string currentUser = @"HKEY_CURRENT_USER\";
 const string localMachine = @"HKEY_LOCAL_MACHINE\";
 const string personalization = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
@@ -13,11 +11,15 @@ Console.WriteLine( "Initializing..." );
 if ( !IsAdmin() )
 {
 	Console.WriteLine( "ERROR: Please restart the app with administrator privileges." );
+	Console.ReadLine();
 	return;
 }
 
 Console.WriteLine( "Disabling activation watermark..." );
 Registry.SetValue( localMachine + @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
+
+Console.WriteLine( "Enabling themes tab in Windows explorer..." );
+Registry.SetValue( currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoThemesTab", 0, RegistryValueKind.DWord );
 
 Console.WriteLine( "Would you like to enable system dark mode? (y/n)" );
 if ( Console.ReadKey().Key == ConsoleKey.Y )
@@ -54,3 +56,6 @@ else
 	Console.WriteLine( "Disabling transparency effects..." );
 	Registry.SetValue( personalization, "EnableTransparency", 0 );
 }
+
+Console.WriteLine( "Finished! Press any key to continue..." );
+Console.ReadKey();
