@@ -26,6 +26,7 @@ Console.ResetColor();
 Console.WriteLine( "Initializing..." );
 if ( !IsAdmin() )
 {
+	Console.ForegroundColor= ConsoleColor.Red;
 	Console.WriteLine( "ERROR: Please restart the app with administrator privileges." );
 	Console.ReadKey();
 	return;
@@ -33,9 +34,6 @@ if ( !IsAdmin() )
 
 Console.WriteLine( "Disabling activation watermark..." );
 Registry.SetValue( localMachine + @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
-
-Console.WriteLine( "Enabling themes tab in Windows explorer..." );
-Registry.SetValue( currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer", "NoThemesTab", 0, RegistryValueKind.DWord );
 
 Console.WriteLine( "Would you like to enable system dark mode? (y/n)" );
 if ( Console.ReadKey().Key == ConsoleKey.Y )
