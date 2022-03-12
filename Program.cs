@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Security.Principal;
 
 namespace WinThemeChange
@@ -167,6 +168,12 @@ namespace WinThemeChange
 					Console.WriteLine( "\nDisabling custom taskbar color..." );
 					Registry.SetValue( personalization, "ColorPrevalence", 0 );
 				}
+			}
+
+			Console.WriteLine( "\nRefreshing explorer..." );
+			foreach ( Process proc in Process.GetProcesses() )
+			{
+				if ( proc.ProcessName == "explorer" ) proc.Kill();
 			}
 
 			Console.ForegroundColor = ConsoleColor.Green;
