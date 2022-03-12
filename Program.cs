@@ -5,6 +5,7 @@ const string currentUser = @"HKEY_CURRENT_USER\";
 const string localMachine = @"HKEY_LOCAL_MACHINE\";
 const string personalization = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
 const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
+const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
 bool IsAdmin() => new WindowsPrincipal( WindowsIdentity.GetCurrent() ).IsInRole( WindowsBuiltInRole.Administrator );
 
 string RGBToBGR( string color )
@@ -13,6 +14,26 @@ string RGBToBGR( string color )
 	string g = color.Substring( 4, 2 );
 	string b = color.Substring( 6, 2 );
 	return string.Format( "0x{0}{1}{2}", b, g, r );
+}
+
+byte[] CreatePalette( string color )
+{
+	byte[] final = new byte[32];
+	byte[] separate = {
+		byte.Parse( color.Substring( 2, 2 ) ),
+		byte.Parse( color.Substring( 4, 2 ) ),
+		byte.Parse( color.Substring( 6, 2 ) ),
+		0xFF
+	};
+	for ( int i = 0; i < 8; i++ )
+	{
+		for ( int j = 0; j < 4; j++ )
+		{
+			final[i] = separate[j];
+		}
+	}
+	final[31] = 0x0;
+	return final;
 }
 
 Console.ForegroundColor = ConsoleColor.Green;
@@ -77,55 +98,30 @@ Console.WriteLine( "Note: If you choose yes, you will need to apply a new wallpa
 Console.ResetColor();
 if ( Console.ReadKey().Key == ConsoleKey.Y )
 {
-
+	Console.WriteLine( "Enabling auto colorization..." );
 	Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 1, RegistryValueKind.DWord );
 }
 else
 {
 	Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0, RegistryValueKind.DWord );
-	Console.WriteLine( "Would you like to set a custom color for the taskbar? (y/n)" );
-	if ( Console.ReadKey().Key == ConsoleKey.Y )
-	{
-		Console.WriteLine( "Enabling custom taskbar colors..." );
-		Registry.SetValue( personalization, "ColorPrevalence", 1 );
-
-		Console.WriteLine( "Enter the color you want the taskbar to be as an RGB format hex code: " );
-		Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
-
-	TaskbarColor:
-		string? hex = Console.ReadLine();
-		if ( hex != null && hex.StartsWith( "0x" ) )
-		{
-			Console.WriteLine( "Applying taskbar color..." );
-			// TODO: Find registry key for taskbar color
-		}
-		else
-		{
-			Console.WriteLine( "Incorrect color format. Make sure it starts with '0x'." );
-			goto TaskbarColor;
-		}
-	}
-	else
-	{
-		Console.WriteLine( "Disabling custom taskbar color..." );
-		Registry.SetValue( personalization, "ColorPrevalence", 0 );
-	}
-
 	Console.WriteLine( "Would you like to set a custom color for application windows? (y/n)" );
 	if ( Console.ReadKey().Key == ConsoleKey.Y )
 	{
 		Console.WriteLine( "Enabling custom application window colors..." );
 		Registry.SetValue( dwm, "ColorPrevalence", 1 );
 
-		Console.WriteLine( "Enter the color you want the taskbar to be as an RGB format hex code: " );
+		Console.WriteLine( "Enter the color you want app windows to be as an RGB format hex code: " );
 		Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
 
 	AppWindowColor:
 		string? hex = Console.ReadLine();
 		if ( hex != null && hex.StartsWith( "0x" ) )
 		{
+			string color = RGBToBGR( hex );
 			Console.WriteLine( "Applying application window color..." );
-			Registry.SetValue( dwm, "AccentColor", RGBToBGR( hex ) );
+			Registry.SetValue( dwm, "AccentColor", color );
+			Registry.SetValue( accent, "AccentColorMenu", color );
+			Registry.SetValue( accent, "StartColorMenu", color );
 		}
 		else
 		{
@@ -137,6 +133,35 @@ else
 	{
 		Console.WriteLine( "Disabling custom application window colors..." );
 		Registry.SetValue( dwm, "ColorPrevalence", 0 );
+	}
+
+	Console.WriteLine( "Would you like to set a custom color for the taskbar? (y/n)" );
+	if ( Console.ReadKey().Key == ConsoleKey.Y )
+	{
+		Console.WriteLine( "Enabling custom taskbar colors..." );
+		Registry.SetValue( personalization, "ColorPrevalence", 1 );
+
+		Console.WriteLine( "Enter the color you want the taskbar to be as an RGB format hex code: " );
+		Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
+		Console.WriteLine( "For best results, you should make the taskbar color a little darker than the application window color." );
+
+	TaskbarColor:
+		string? hex = Console.ReadLine();
+		if ( hex != null && hex.StartsWith( "0x" ) )
+		{
+			Console.WriteLine( "Applying taskbar color..." );
+			Registry.SetValue( accent, "AccentPalette", CreatePalette( hex ), RegistryValueKind.Binary );
+		}
+		else
+		{
+			Console.WriteLine( "Incorrect color format. Make sure it starts with '0x'." );
+			goto TaskbarColor;
+		}
+	}
+	else
+	{
+		Console.WriteLine( "Disabling custom taskbar color..." );
+		Registry.SetValue( personalization, "ColorPrevalence", 0 );
 	}
 }
 
