@@ -2,27 +2,26 @@
 using System.Security.Principal;
 
 const string currentUser = @"HKEY_CURRENT_USER\";
-const string localMachine = @"HKEY_LOCAL_MACHINE\";
 const string personalization = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
 const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
 const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
 bool IsAdmin() => new WindowsPrincipal( WindowsIdentity.GetCurrent() ).IsInRole( WindowsBuiltInRole.Administrator );
 
-string RGBToBGR( string color )
+int RGBToBGR( string color )
 {
 	string r = color.Substring( 2, 2 );
 	string g = color.Substring( 4, 2 );
 	string b = color.Substring( 6, 2 );
-	return string.Format( "0x{0}{1}{2}", b, g, r );
+	return Convert.ToInt32( string.Format( "0x{0}{1}{2}", b, g, r ), 16 );
 }
 
 byte[] CreatePalette( string color )
 {
 	byte[] final = new byte[32];
 	byte[] separate = {
-		byte.Parse( color.Substring( 2, 2 ) ),
-		byte.Parse( color.Substring( 4, 2 ) ),
-		byte.Parse( color.Substring( 6, 2 ) ),
+		Convert.ToByte( string.Concat( "0x", color.AsSpan( 2, 2 ) ), 16 ),
+		Convert.ToByte( string.Concat( "0x", color.AsSpan( 4, 2 ) ), 16 ),
+		Convert.ToByte( string.Concat( "0x", color.AsSpan( 6, 2 ) ), 16 ),
 		0xFF
 	};
 	for ( int i = 0; i < 8; i++ )
@@ -47,14 +46,14 @@ Console.ResetColor();
 Console.WriteLine( "Initializing..." );
 if ( !IsAdmin() )
 {
-	Console.ForegroundColor= ConsoleColor.Red;
+	Console.ForegroundColor = ConsoleColor.Red;
 	Console.WriteLine( "ERROR: Please restart the app with administrator privileges." );
 	Console.ReadKey();
 	return;
 }
 
 Console.WriteLine( "Disabling activation watermark..." );
-Registry.SetValue( localMachine + @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
+Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
 
 Console.WriteLine( "Would you like to enable system dark mode? (y/n)" );
 if ( Console.ReadKey().Key == ConsoleKey.Y )
@@ -99,29 +98,29 @@ Console.ResetColor();
 if ( Console.ReadKey().Key == ConsoleKey.Y )
 {
 	Console.WriteLine( "Enabling auto colorization..." );
-	Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 1, RegistryValueKind.DWord );
+	Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 1 );
 }
 else
 {
-	Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0, RegistryValueKind.DWord );
+	Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 );
 	Console.WriteLine( "Would you like to set a custom color for application windows? (y/n)" );
 	if ( Console.ReadKey().Key == ConsoleKey.Y )
 	{
 		Console.WriteLine( "Enabling custom application window colors..." );
 		Registry.SetValue( dwm, "ColorPrevalence", 1 );
 
-		Console.WriteLine( "Enter the color you want app windows to be as an RGB format hex code: " );
+		Console.WriteLine( "Enter the color you want app windows to be as a 24-bit hex code: " );
 		Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
 
 	AppWindowColor:
 		string? hex = Console.ReadLine();
-		if ( hex != null && hex.StartsWith( "0x" ) )
+		if ( hex != null && hex.StartsWith( "0x" ) && hex.Length == 8 )
 		{
-			string color = RGBToBGR( hex );
+			int color = RGBToBGR( hex );
 			Console.WriteLine( "Applying application window color..." );
-			Registry.SetValue( dwm, "AccentColor", color );
-			Registry.SetValue( accent, "AccentColorMenu", color );
-			Registry.SetValue( accent, "StartColorMenu", color );
+			Registry.SetValue( dwm, "AccentColor", color, RegistryValueKind.DWord );
+			Registry.SetValue( accent, "AccentColorMenu", color, RegistryValueKind.DWord );
+			Registry.SetValue( accent, "StartColorMenu", color, RegistryValueKind.DWord );
 		}
 		else
 		{
@@ -141,13 +140,13 @@ else
 		Console.WriteLine( "Enabling custom taskbar colors..." );
 		Registry.SetValue( personalization, "ColorPrevalence", 1 );
 
-		Console.WriteLine( "Enter the color you want the taskbar to be as an RGB format hex code: " );
+		Console.WriteLine( "Enter the color you want the taskbar to be as a 24-bit hex code: " );
 		Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
 		Console.WriteLine( "For best results, you should make the taskbar color a little darker than the application window color." );
 
 	TaskbarColor:
 		string? hex = Console.ReadLine();
-		if ( hex != null && hex.StartsWith( "0x" ) )
+		if ( hex != null && hex.StartsWith( "0x" ) && hex.Length == 8 )
 		{
 			Console.WriteLine( "Applying taskbar color..." );
 			Registry.SetValue( accent, "AccentPalette", CreatePalette( hex ), RegistryValueKind.Binary );
@@ -166,6 +165,6 @@ else
 }
 
 Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine( "Finished! Most changes should take effect immediately, but restarting your system is still recommended." );
+Console.WriteLine( "Finished! Most changes should take effect immediately, but some will require a restart." );
 Console.WriteLine( "Press any key to continue..." );
 Console.ReadKey();
