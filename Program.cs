@@ -43,7 +43,7 @@ namespace WinThemeChange
 		static void Main( string[] args )
 		{
 			Console.ForegroundColor = ConsoleColor.Green;
-			Console.WriteLine( "WinThemeUpdate v1.0.0 | Created by LambdaGaming" );
+			Console.WriteLine( "WinThemeChange v1.0.0 | Created by LambdaGaming" );
 			Console.WriteLine( "This program will allow you to customize an unactivated version of Windows 10 or 11 as if it were activated." );
 			Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine( "WARNING: This program makes changes to your registry. Please consider making a backup before proceeding." );
