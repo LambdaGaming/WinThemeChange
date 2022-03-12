@@ -22,6 +22,7 @@ namespace WinThemeChange
 
 		static byte[] CreatePalette( string color )
 		{
+			int count = 0;
 			byte[] final = new byte[32];
 			byte[] separate = {
 				Convert.ToByte( string.Concat( "0x", color.Substring( 2, 2 ) ), 16 ),
@@ -29,12 +30,13 @@ namespace WinThemeChange
 				Convert.ToByte( string.Concat( "0x", color.Substring( 6, 2 ) ), 16 ),
 				0xFF
 			};
-			for ( int i = 0; i < 8; i++ )
+			for ( int i = 0; i < 32; i++ )
 			{
-				for ( int j = 0; j < 4; j++ )
-				{
-					final[i] = separate[j];
-				}
+				final[i] = separate[count];
+				if ( count == 3 )
+					count = 0;
+				else
+					count++;
 			}
 			final[31] = 0x0;
 			return final;
@@ -62,60 +64,58 @@ namespace WinThemeChange
 			Console.WriteLine( "Disabling activation watermark..." );
 			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
 
-			Console.WriteLine( "Would you like to enable system dark mode? (y/n)" );
+			Console.WriteLine( "\nWould you like to enable system dark mode? (y/n)" );
 			if ( Console.ReadKey().Key == ConsoleKey.Y )
 			{
-				Console.WriteLine( "Enabling system dark mode..." );
+				Console.WriteLine( "\nEnabling system dark mode..." );
 				Registry.SetValue( personalization, "SystemUsesLightTheme", 0 );
 			}
 			else
 			{
-				Console.WriteLine( "Disabling system dark mode..." );
+				Console.WriteLine( "\nDisabling system dark mode..." );
 				Registry.SetValue( personalization, "SystemUsesLightTheme", 1 );
 			}
 
-			Console.WriteLine( "Would you like to enable app dark mode? (y/n)" );
+			Console.WriteLine( "\nWould you like to enable app dark mode? (y/n)" );
 			if ( Console.ReadKey().Key == ConsoleKey.Y )
 			{
-				Console.WriteLine( "Enabling app dark mode..." );
+				Console.WriteLine( "\nEnabling app dark mode..." );
 				Registry.SetValue( personalization, "AppsUseLightTheme", 0 );
 			}
 			else
 			{
-				Console.WriteLine( "Disabling app dark mode..." );
+				Console.WriteLine( "\nDisabling app dark mode..." );
 				Registry.SetValue( personalization, "AppsUseLightTheme", 1 );
 			}
 
-			Console.WriteLine( "Would you like to enable transparency effects? (y/n)" );
+			Console.WriteLine( "\nWould you like to enable transparency effects? (y/n)" );
 			if ( Console.ReadKey().Key == ConsoleKey.Y )
 			{
-				Console.WriteLine( "Enabling transparency effects..." );
+				Console.WriteLine( "\nEnabling transparency effects..." );
 				Registry.SetValue( personalization, "EnableTransparency", 1 );
 			}
 			else
 			{
-				Console.WriteLine( "Disabling transparency effects..." );
+				Console.WriteLine( "\nDisabling transparency effects..." );
 				Registry.SetValue( personalization, "EnableTransparency", 0 );
 			}
 
-			Console.WriteLine( "Would you like Windows to automatically choose colors based on the current wallpaper? (y/n)" );
+			Console.WriteLine( "\nWould you like Windows to automatically choose colors based on the current wallpaper? (y/n)" );
 			Console.ForegroundColor = ConsoleColor.DarkYellow;
 			Console.WriteLine( "Note: If you choose yes, you will need to apply a new wallpaper or reapply your current one in order for changes to take effect." );
 			Console.ResetColor();
 			if ( Console.ReadKey().Key == ConsoleKey.Y )
 			{
-				Console.WriteLine( "Enabling auto colorization..." );
+				Console.WriteLine( "\nEnabling auto colorization..." );
 				Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 1 );
 			}
 			else
 			{
 				Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 );
-				Console.WriteLine( "Would you like to set a custom color for application windows? (y/n)" );
+				Console.WriteLine( "\nWould you like to set a custom color for application windows? (y/n)" );
 				if ( Console.ReadKey().Key == ConsoleKey.Y )
 				{
-					Console.WriteLine( "Enabling custom application window colors..." );
 					Registry.SetValue( dwm, "ColorPrevalence", 1 );
-
 					Console.WriteLine( "Enter the color you want app windows to be as a 24-bit hex code: " );
 					Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
 
@@ -124,7 +124,7 @@ namespace WinThemeChange
 					if ( hex != null && hex.StartsWith( "0x" ) && hex.Length == 8 )
 					{
 						int color = RGBToBGR( hex );
-						Console.WriteLine( "Applying application window color..." );
+						Console.WriteLine( "\nApplying application window color..." );
 						Registry.SetValue( dwm, "AccentColor", color, RegistryValueKind.DWord );
 						Registry.SetValue( accent, "AccentColorMenu", color, RegistryValueKind.DWord );
 						Registry.SetValue( accent, "StartColorMenu", color, RegistryValueKind.DWord );
@@ -137,16 +137,14 @@ namespace WinThemeChange
 				}
 				else
 				{
-					Console.WriteLine( "Disabling custom application window colors..." );
+					Console.WriteLine( "\nDisabling custom application window colors..." );
 					Registry.SetValue( dwm, "ColorPrevalence", 0 );
 				}
 
-				Console.WriteLine( "Would you like to set a custom color for the taskbar? (y/n)" );
+				Console.WriteLine( "\nWould you like to set a custom color for the taskbar? (y/n)" );
 				if ( Console.ReadKey().Key == ConsoleKey.Y )
 				{
-					Console.WriteLine( "Enabling custom taskbar colors..." );
 					Registry.SetValue( personalization, "ColorPrevalence", 1 );
-
 					Console.WriteLine( "Enter the color you want the taskbar to be as a 24-bit hex code: " );
 					Console.WriteLine( "(Example: 0xFF0000 is red) Use the Google color picker and copy the hex code if you are unsure: https://g.co/kgs/yE982u" );
 					Console.WriteLine( "For best results, you should make the taskbar color a little darker than the application window color." );
@@ -155,7 +153,7 @@ namespace WinThemeChange
 					string hex = Console.ReadLine();
 					if ( hex != null && hex.StartsWith( "0x" ) && hex.Length == 8 )
 					{
-						Console.WriteLine( "Applying taskbar color..." );
+						Console.WriteLine( "\nApplying taskbar color..." );
 						Registry.SetValue( accent, "AccentPalette", CreatePalette( hex ), RegistryValueKind.Binary );
 					}
 					else
@@ -166,13 +164,13 @@ namespace WinThemeChange
 				}
 				else
 				{
-					Console.WriteLine( "Disabling custom taskbar color..." );
+					Console.WriteLine( "\nDisabling custom taskbar color..." );
 					Registry.SetValue( personalization, "ColorPrevalence", 0 );
 				}
 			}
 
 			Console.ForegroundColor = ConsoleColor.Green;
-			Console.WriteLine( "Finished! Most changes should take effect immediately, but some will require a restart." );
+			Console.WriteLine( "\nFinished! Most changes should take effect immediately, but some will require a restart." );
 			Console.WriteLine( "Press any key to continue..." );
 			Console.ReadKey();
 		}
