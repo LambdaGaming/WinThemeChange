@@ -38,7 +38,7 @@ namespace WinThemeChange
 
 		static Color AdjustTaskbarColor( Color color )
 		{
-			return Color.FromArgb( ( int ) ( color.R / 1.25 ), ( int ) ( color.G / 1.25 ), ( int ) ( color.B / 1.25 ) );
+			return Color.FromArgb( ( int ) ( color.R * 0.5 ), ( int ) ( color.G * 0.5 ), ( int ) ( color.B * 0.5 ) );
 		}
 
 		void CustomThemeColor()
