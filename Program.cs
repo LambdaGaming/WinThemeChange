@@ -17,7 +17,7 @@ namespace WinThemeChange
 				return;
 			}
 
-			MessageBox.Show( "WinThemeChange v2.0.0 | Copyright © 2022 LambdaGaming\nDo not redistribute this program without the creator's permission!\n\nThis program will allow you to customize unactivated versions of Windows 10 and 11 as if they were activated.\n\nWARNING: This program makes changes to your registry. Please consider making a backup before proceeding.\n\nThe creator of this software is not responsible for any damages caused by the use of this software. Proceed at your own risk." );
+			MessageBox.Show( "WinThemeChange v2.1 | Copyright © 2022-2023 LambdaGaming\n\nWARNING: This program makes changes to your registry. Please consider making a backup before proceeding.\n\nYou are using this software at your own risk. The creator is not responsible for any damage or other problems that may arise from using this software." );
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault( false );
 			Application.Run( new MainForm() );
