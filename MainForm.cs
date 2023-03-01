@@ -13,11 +13,17 @@ namespace WinThemeChange
 		const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
 		const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
 
-		static void DisableWatermark() => Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
 		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
 		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
 		static void EnableTransparency( bool enable ) => Registry.SetValue( personalization, "EnableTransparency", enable ? 1 : 0 );
-		
+
+		static void DisableWatermark()
+		{
+			// Use both in case the old one still works
+			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
+			Registry.SetValue( currentUser + @"\Control Panel\Desktop", "PaintDesktopVersion", 0 );
+		}
+
 		static void RestartExplorer()
 		{
 			foreach ( Process proc in Process.GetProcesses() )
