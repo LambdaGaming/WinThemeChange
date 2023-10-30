@@ -20,8 +20,8 @@ namespace WinThemeChange
 		static void DisableWatermark()
 		{
 			// Use both in case the old one still works
-			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform", "NotificationDisabled", 1 );
-			Registry.SetValue( currentUser + @"\Control Panel\Desktop", "PaintDesktopVersion", 0 );
+			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation", "NotificationDisabled", 1 );
+			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
 		}
 
 		static void RestartExplorer()

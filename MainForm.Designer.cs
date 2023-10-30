@@ -189,7 +189,7 @@
 			this.Name = "MainForm";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "WinThemeChange v2.0.0";
+			this.Text = "WinThemeChange v2.1.1";
 			this.ResumeLayout(false);
 
 		}
