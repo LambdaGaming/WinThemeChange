@@ -28,144 +28,230 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Button1 = new System.Windows.Forms.Button();
-			this.Button2 = new System.Windows.Forms.Button();
 			this.colorDialog = new System.Windows.Forms.ColorDialog();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button5 = new System.Windows.Forms.Button();
-			this.button6 = new System.Windows.Forms.Button();
-			this.button8 = new System.Windows.Forms.Button();
-			this.button9 = new System.Windows.Forms.Button();
-			this.button10 = new System.Windows.Forms.Button();
-			this.button11 = new System.Windows.Forms.Button();
-			this.button12 = new System.Windows.Forms.Button();
-			this.button7 = new System.Windows.Forms.Button();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.BackgroundButton = new System.Windows.Forms.Button();
+			this.ColorsButton = new System.Windows.Forms.Button();
+			this.LockScreenButton = new System.Windows.Forms.Button();
+			this.ThemesButton = new System.Windows.Forms.Button();
+			this.FontsButton = new System.Windows.Forms.Button();
+			this.StartButton = new System.Windows.Forms.Button();
+			this.TaskbarButton = new System.Windows.Forms.Button();
+			this.ExperimentalButton = new System.Windows.Forms.Button();
+			this.BackgroundPanel = new System.Windows.Forms.Panel();
+			this.ColorsPanel = new System.Windows.Forms.Panel();
+			this.LockScreenPanel = new System.Windows.Forms.Panel();
+			this.ThemesPanel = new System.Windows.Forms.Panel();
+			this.FontsPanel = new System.Windows.Forms.Panel();
+			this.StartPanel = new System.Windows.Forms.Panel();
+			this.TaskbarPanel = new System.Windows.Forms.Panel();
+			this.ExperimentalPanel = new System.Windows.Forms.Panel();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
+			this.splitContainer1.SuspendLayout();
+			this.BackgroundPanel.SuspendLayout();
+			this.ColorsPanel.SuspendLayout();
+			this.LockScreenPanel.SuspendLayout();
+			this.ThemesPanel.SuspendLayout();
+			this.FontsPanel.SuspendLayout();
+			this.StartPanel.SuspendLayout();
+			this.TaskbarPanel.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// Button1
-			// 
-			this.Button1.Location = new System.Drawing.Point(12, 12);
-			this.Button1.Name = "Button1";
-			this.Button1.Size = new System.Drawing.Size(128, 34);
-			this.Button1.TabIndex = 0;
-			this.Button1.Text = "Hide Watermark";
-			this.Button1.UseVisualStyleBackColor = true;
-			this.Button1.Click += new System.EventHandler(this.Button1_Click);
-			// 
-			// Button2
-			// 
-			this.Button2.Location = new System.Drawing.Point(147, 12);
-			this.Button2.Name = "Button2";
-			this.Button2.Size = new System.Drawing.Size(128, 34);
-			this.Button2.TabIndex = 1;
-			this.Button2.Text = "Enable System Dark Mode";
-			this.Button2.UseVisualStyleBackColor = true;
-			this.Button2.Click += new System.EventHandler(this.Button2_Click);
 			// 
 			// colorDialog
 			// 
 			this.colorDialog.AnyColor = true;
 			// 
-			// button3
+			// splitContainer1
 			// 
-			this.button3.Location = new System.Drawing.Point(281, 12);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(128, 34);
-			this.button3.TabIndex = 2;
-			this.button3.Text = "Enable System Light Mode";
-			this.button3.UseVisualStyleBackColor = true;
-			this.button3.Click += new System.EventHandler(this.button3_Click);
+			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer1.Name = "splitContainer1";
 			// 
-			// button4
+			// splitContainer1.Panel1
 			// 
-			this.button4.Location = new System.Drawing.Point(12, 52);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(128, 33);
-			this.button4.TabIndex = 3;
-			this.button4.Text = "Enable App Dark Mode";
-			this.button4.UseVisualStyleBackColor = true;
-			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.splitContainer1.Panel1.Controls.Add(this.ExperimentalButton);
+			this.splitContainer1.Panel1.Controls.Add(this.TaskbarButton);
+			this.splitContainer1.Panel1.Controls.Add(this.StartButton);
+			this.splitContainer1.Panel1.Controls.Add(this.FontsButton);
+			this.splitContainer1.Panel1.Controls.Add(this.ThemesButton);
+			this.splitContainer1.Panel1.Controls.Add(this.LockScreenButton);
+			this.splitContainer1.Panel1.Controls.Add(this.ColorsButton);
+			this.splitContainer1.Panel1.Controls.Add(this.BackgroundButton);
 			// 
-			// button5
+			// splitContainer1.Panel2
 			// 
-			this.button5.Location = new System.Drawing.Point(147, 52);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(128, 33);
-			this.button5.TabIndex = 4;
-			this.button5.Text = "Enable App Light Mode";
-			this.button5.UseVisualStyleBackColor = true;
-			this.button5.Click += new System.EventHandler(this.button5_Click);
+			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
+			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
+			this.splitContainer1.SplitterDistance = 303;
+			this.splitContainer1.TabIndex = 13;
 			// 
-			// button6
+			// BackgroundButton
 			// 
-			this.button6.Location = new System.Drawing.Point(281, 52);
-			this.button6.Name = "button6";
-			this.button6.Size = new System.Drawing.Size(128, 34);
-			this.button6.TabIndex = 5;
-			this.button6.Text = "Auto Pick Theme Colors From Wallpaper";
-			this.button6.UseVisualStyleBackColor = true;
-			this.button6.Click += new System.EventHandler(this.button6_Click);
+			this.BackgroundButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.BackgroundButton.Location = new System.Drawing.Point(0, 0);
+			this.BackgroundButton.Name = "BackgroundButton";
+			this.BackgroundButton.Size = new System.Drawing.Size(303, 23);
+			this.BackgroundButton.TabIndex = 0;
+			this.BackgroundButton.Text = "Background";
+			this.BackgroundButton.UseVisualStyleBackColor = true;
+			this.BackgroundButton.Click += new System.EventHandler(this.BackgroundButton_Click);
 			// 
-			// button8
+			// ColorsButton
 			// 
-			this.button8.Location = new System.Drawing.Point(12, 91);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(128, 34);
-			this.button8.TabIndex = 7;
-			this.button8.Text = "Set Custom Theme Color";
-			this.button8.UseVisualStyleBackColor = true;
-			this.button8.Click += new System.EventHandler(this.button8_Click);
+			this.ColorsButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ColorsButton.Location = new System.Drawing.Point(0, 23);
+			this.ColorsButton.Name = "ColorsButton";
+			this.ColorsButton.Size = new System.Drawing.Size(303, 23);
+			this.ColorsButton.TabIndex = 1;
+			this.ColorsButton.Text = "Colors";
+			this.ColorsButton.UseVisualStyleBackColor = true;
+			this.ColorsButton.Click += new System.EventHandler(this.ColorsButton_Click);
 			// 
-			// button9
+			// LockScreenButton
 			// 
-			this.button9.Location = new System.Drawing.Point(12, 131);
-			this.button9.Name = "button9";
-			this.button9.Size = new System.Drawing.Size(128, 34);
-			this.button9.TabIndex = 8;
-			this.button9.Text = "Enable Transparency Effects";
-			this.button9.UseVisualStyleBackColor = true;
-			this.button9.Click += new System.EventHandler(this.button9_Click);
+			this.LockScreenButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.LockScreenButton.Location = new System.Drawing.Point(0, 46);
+			this.LockScreenButton.Name = "LockScreenButton";
+			this.LockScreenButton.Size = new System.Drawing.Size(303, 23);
+			this.LockScreenButton.TabIndex = 2;
+			this.LockScreenButton.Text = "Lock Screen";
+			this.LockScreenButton.UseVisualStyleBackColor = true;
+			this.LockScreenButton.Click += new System.EventHandler(this.LockScreenButton_Click);
 			// 
-			// button10
+			// ThemesButton
 			// 
-			this.button10.Location = new System.Drawing.Point(146, 131);
-			this.button10.Name = "button10";
-			this.button10.Size = new System.Drawing.Size(128, 34);
-			this.button10.TabIndex = 9;
-			this.button10.Text = "Disable Transparency Effects";
-			this.button10.UseVisualStyleBackColor = true;
-			this.button10.Click += new System.EventHandler(this.button10_Click);
+			this.ThemesButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ThemesButton.Location = new System.Drawing.Point(0, 69);
+			this.ThemesButton.Name = "ThemesButton";
+			this.ThemesButton.Size = new System.Drawing.Size(303, 23);
+			this.ThemesButton.TabIndex = 3;
+			this.ThemesButton.Text = "Themes";
+			this.ThemesButton.UseVisualStyleBackColor = true;
+			this.ThemesButton.Click += new System.EventHandler(this.ThemesButton_Click);
 			// 
-			// button11
+			// FontsButton
 			// 
-			this.button11.Location = new System.Drawing.Point(281, 92);
-			this.button11.Name = "button11";
-			this.button11.Size = new System.Drawing.Size(128, 34);
-			this.button11.TabIndex = 10;
-			this.button11.Text = "Disable Custom Theme Colors";
-			this.button11.UseVisualStyleBackColor = true;
-			this.button11.Click += new System.EventHandler(this.button11_Click);
+			this.FontsButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.FontsButton.Location = new System.Drawing.Point(0, 92);
+			this.FontsButton.Name = "FontsButton";
+			this.FontsButton.Size = new System.Drawing.Size(303, 23);
+			this.FontsButton.TabIndex = 4;
+			this.FontsButton.Text = "Fonts";
+			this.FontsButton.UseVisualStyleBackColor = true;
+			this.FontsButton.Click += new System.EventHandler(this.FontsButton_Click);
 			// 
-			// button12
+			// StartButton
 			// 
-			this.button12.Location = new System.Drawing.Point(281, 132);
-			this.button12.Name = "button12";
-			this.button12.Size = new System.Drawing.Size(128, 34);
-			this.button12.TabIndex = 11;
-			this.button12.Text = "Force Restart Explorer";
-			this.button12.UseVisualStyleBackColor = true;
-			this.button12.Click += new System.EventHandler(this.button12_Click);
+			this.StartButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.StartButton.Location = new System.Drawing.Point(0, 115);
+			this.StartButton.Name = "StartButton";
+			this.StartButton.Size = new System.Drawing.Size(303, 23);
+			this.StartButton.TabIndex = 5;
+			this.StartButton.Text = "Start";
+			this.StartButton.UseVisualStyleBackColor = true;
+			this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
 			// 
-			// button7
+			// TaskbarButton
 			// 
-			this.button7.Location = new System.Drawing.Point(146, 91);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(128, 34);
-			this.button7.TabIndex = 12;
-			this.button7.Text = "Set Custom Theme Color (Taskbar Only)";
-			this.button7.UseVisualStyleBackColor = true;
-			this.button7.Click += new System.EventHandler(this.button7_Click);
+			this.TaskbarButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.TaskbarButton.Location = new System.Drawing.Point(0, 138);
+			this.TaskbarButton.Name = "TaskbarButton";
+			this.TaskbarButton.Size = new System.Drawing.Size(303, 23);
+			this.TaskbarButton.TabIndex = 6;
+			this.TaskbarButton.Text = "Taskbar";
+			this.TaskbarButton.UseVisualStyleBackColor = true;
+			this.TaskbarButton.Click += new System.EventHandler(this.TaskbarButton_Click);
+			// 
+			// ExperimentalButton
+			// 
+			this.ExperimentalButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ExperimentalButton.Location = new System.Drawing.Point(0, 161);
+			this.ExperimentalButton.Name = "ExperimentalButton";
+			this.ExperimentalButton.Size = new System.Drawing.Size(303, 23);
+			this.ExperimentalButton.TabIndex = 7;
+			this.ExperimentalButton.Text = "Experimental";
+			this.ExperimentalButton.UseVisualStyleBackColor = true;
+			this.ExperimentalButton.Click += new System.EventHandler(this.ExperimentalButton_Click);
+			// 
+			// BackgroundPanel
+			// 
+			this.BackgroundPanel.Controls.Add(this.ColorsPanel);
+			this.BackgroundPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.BackgroundPanel.Location = new System.Drawing.Point(0, 0);
+			this.BackgroundPanel.Name = "BackgroundPanel";
+			this.BackgroundPanel.Size = new System.Drawing.Size(443, 559);
+			this.BackgroundPanel.TabIndex = 0;
+			// 
+			// ColorsPanel
+			// 
+			this.ColorsPanel.Controls.Add(this.LockScreenPanel);
+			this.ColorsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ColorsPanel.Location = new System.Drawing.Point(0, 0);
+			this.ColorsPanel.Name = "ColorsPanel";
+			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
+			this.ColorsPanel.TabIndex = 1;
+			this.ColorsPanel.Visible = false;
+			// 
+			// LockScreenPanel
+			// 
+			this.LockScreenPanel.Controls.Add(this.ThemesPanel);
+			this.LockScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.LockScreenPanel.Location = new System.Drawing.Point(0, 0);
+			this.LockScreenPanel.Name = "LockScreenPanel";
+			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
+			this.LockScreenPanel.TabIndex = 1;
+			this.LockScreenPanel.Visible = false;
+			// 
+			// ThemesPanel
+			// 
+			this.ThemesPanel.Controls.Add(this.FontsPanel);
+			this.ThemesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ThemesPanel.Location = new System.Drawing.Point(0, 0);
+			this.ThemesPanel.Name = "ThemesPanel";
+			this.ThemesPanel.Size = new System.Drawing.Size(443, 559);
+			this.ThemesPanel.TabIndex = 1;
+			this.ThemesPanel.Visible = false;
+			// 
+			// FontsPanel
+			// 
+			this.FontsPanel.Controls.Add(this.StartPanel);
+			this.FontsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.FontsPanel.Location = new System.Drawing.Point(0, 0);
+			this.FontsPanel.Name = "FontsPanel";
+			this.FontsPanel.Size = new System.Drawing.Size(443, 559);
+			this.FontsPanel.TabIndex = 1;
+			this.FontsPanel.Visible = false;
+			// 
+			// StartPanel
+			// 
+			this.StartPanel.Controls.Add(this.TaskbarPanel);
+			this.StartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.StartPanel.Location = new System.Drawing.Point(0, 0);
+			this.StartPanel.Name = "StartPanel";
+			this.StartPanel.Size = new System.Drawing.Size(443, 559);
+			this.StartPanel.TabIndex = 1;
+			this.StartPanel.Visible = false;
+			// 
+			// TaskbarPanel
+			// 
+			this.TaskbarPanel.Controls.Add(this.ExperimentalPanel);
+			this.TaskbarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.TaskbarPanel.Location = new System.Drawing.Point(0, 0);
+			this.TaskbarPanel.Name = "TaskbarPanel";
+			this.TaskbarPanel.Size = new System.Drawing.Size(443, 559);
+			this.TaskbarPanel.TabIndex = 1;
+			this.TaskbarPanel.Visible = false;
+			// 
+			// ExperimentalPanel
+			// 
+			this.ExperimentalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ExperimentalPanel.Location = new System.Drawing.Point(0, 0);
+			this.ExperimentalPanel.Name = "ExperimentalPanel";
+			this.ExperimentalPanel.Size = new System.Drawing.Size(443, 559);
+			this.ExperimentalPanel.TabIndex = 1;
+			this.ExperimentalPanel.Visible = false;
 			// 
 			// MainForm
 			// 
@@ -173,42 +259,46 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
 			this.CausesValidation = false;
-			this.ClientSize = new System.Drawing.Size(421, 178);
-			this.Controls.Add(this.button7);
-			this.Controls.Add(this.button12);
-			this.Controls.Add(this.button11);
-			this.Controls.Add(this.button10);
-			this.Controls.Add(this.button9);
-			this.Controls.Add(this.button8);
-			this.Controls.Add(this.button6);
-			this.Controls.Add(this.button5);
-			this.Controls.Add(this.button4);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.Button2);
-			this.Controls.Add(this.Button1);
+			this.ClientSize = new System.Drawing.Size(750, 559);
+			this.Controls.Add(this.splitContainer1);
 			this.Name = "MainForm";
 			this.ShowIcon = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "WinThemeChange v2.1.1";
+			this.Text = "WinThemeChange v3.0";
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+			this.splitContainer1.ResumeLayout(false);
+			this.BackgroundPanel.ResumeLayout(false);
+			this.ColorsPanel.ResumeLayout(false);
+			this.LockScreenPanel.ResumeLayout(false);
+			this.ThemesPanel.ResumeLayout(false);
+			this.FontsPanel.ResumeLayout(false);
+			this.StartPanel.ResumeLayout(false);
+			this.TaskbarPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Button Button1;
-		private System.Windows.Forms.Button Button2;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.Button button6;
-		private System.Windows.Forms.Button button8;
-		private System.Windows.Forms.Button button9;
-		private System.Windows.Forms.Button button10;
-		private System.Windows.Forms.Button button11;
-		private System.Windows.Forms.Button button12;
-		private System.Windows.Forms.Button button7;
 		internal System.Windows.Forms.ColorDialog colorDialog;
+		private System.Windows.Forms.SplitContainer splitContainer1;
+		private System.Windows.Forms.Button ColorsButton;
+		private System.Windows.Forms.Button BackgroundButton;
+		private System.Windows.Forms.Button LockScreenButton;
+		private System.Windows.Forms.Button ThemesButton;
+		private System.Windows.Forms.Button FontsButton;
+		private System.Windows.Forms.Button StartButton;
+		private System.Windows.Forms.Button TaskbarButton;
+		private System.Windows.Forms.Button ExperimentalButton;
+		private System.Windows.Forms.Panel BackgroundPanel;
+		private System.Windows.Forms.Panel ColorsPanel;
+		private System.Windows.Forms.Panel LockScreenPanel;
+		private System.Windows.Forms.Panel ThemesPanel;
+		private System.Windows.Forms.Panel FontsPanel;
+		private System.Windows.Forms.Panel StartPanel;
+		private System.Windows.Forms.Panel TaskbarPanel;
+		private System.Windows.Forms.Panel ExperimentalPanel;
 	}
 }
 

@@ -13,6 +13,8 @@ namespace WinThemeChange
 		const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
 		const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
 
+		private Panel Instance;
+
 		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
 		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
 		static void EnableTransparency( bool enable ) => Registry.SetValue( personalization, "EnableTransparency", enable ? 1 : 0 );
@@ -111,19 +113,63 @@ namespace WinThemeChange
 		public MainForm()
 		{
 			InitializeComponent();
+			Instance = BackgroundPanel;
 		}
 
-		private void Button1_Click( object sender, EventArgs e ) => DisableWatermark();
-		private void Button2_Click( object sender, EventArgs e ) => EnableDarkMode( true );
-		private void button3_Click( object sender, EventArgs e ) => EnableDarkMode( false );
-		private void button4_Click( object sender, EventArgs e ) => EnableAppDarkMode( true );
-		private void button5_Click( object sender, EventArgs e ) => EnableAppDarkMode( false );
-		private void button6_Click( object sender, EventArgs e ) => EnableAutoColors();
-		private void button7_Click( object sender, EventArgs e ) => SetTaskbarColor();
-		private void button8_Click( object sender, EventArgs e ) => CustomThemeColor();
-		private void button9_Click( object sender, EventArgs e ) => EnableTransparency( true );
-		private void button10_Click( object sender, EventArgs e ) => EnableTransparency( false );
-		private void button11_Click( object sender, EventArgs e ) => ResetThemeColors();
-		private void button12_Click( object sender, EventArgs e ) => RestartExplorer();
+		private void ExperimentalButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			ExperimentalPanel.Visible = true;
+			Instance = ExperimentalPanel;
+		}
+
+		private void TaskbarButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			TaskbarPanel.Visible = true;
+			Instance = TaskbarPanel;
+		}
+
+		private void StartButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			StartPanel.Visible = true;
+			Instance = StartPanel;
+		}
+
+		private void FontsButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			FontsPanel.Visible = true;
+			Instance = FontsPanel;
+		}
+
+		private void ThemesButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			ThemesPanel.Visible = true;
+			Instance = ThemesPanel;
+		}
+
+		private void LockScreenButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			LockScreenPanel.Visible = true;
+			Instance = LockScreenPanel;
+		}
+
+		private void ColorsButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			ColorsPanel.Visible = true;
+			Instance = ColorsPanel;
+		}
+
+		private void BackgroundButton_Click( object sender, EventArgs e )
+		{
+			Instance.Visible = false;
+			BackgroundPanel.Visible = true;
+			Instance = BackgroundPanel;
+		}
 	}
 }
