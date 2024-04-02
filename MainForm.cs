@@ -114,44 +114,22 @@ namespace WinThemeChange
 			BackgroundPanel.BringToFront();
 		}
 
-		private void ExperimentalButton_Click( object sender, EventArgs e )
-		{
-			ExperimentalPanel.BringToFront();
-		}
+		#region LeftSide
+		private void ExperimentalButton_Click( object sender, EventArgs e ) => ExperimentalPanel.BringToFront();
+		private void TaskbarButton_Click( object sender, EventArgs e ) => TaskbarPanel.BringToFront();
+		private void StartButton_Click( object sender, EventArgs e ) => StartPanel.BringToFront();
+		private void FontsButton_Click( object sender, EventArgs e ) => FontsPanel.BringToFront();
+		private void ThemesButton_Click( object sender, EventArgs e ) => ThemesPanel.BringToFront();
+		private void LockScreenButton_Click( object sender, EventArgs e ) => LockScreenPanel.BringToFront();
+		private void ColorsButton_Click( object sender, EventArgs e ) => ColorsPanel.BringToFront();
+		private void BackgroundButton_Click( object sender, EventArgs e ) => BackgroundPanel.BringToFront();
+		#endregion
 
-		private void TaskbarButton_Click( object sender, EventArgs e )
+		#region RightSide
+		private void DisableWatermarkButton_Click( object sender, EventArgs e )
 		{
-			TaskbarPanel.BringToFront();
+			DisableWatermark();
 		}
-
-		private void StartButton_Click( object sender, EventArgs e )
-		{
-			StartPanel.BringToFront();
-		}
-
-		private void FontsButton_Click( object sender, EventArgs e )
-		{
-			FontsPanel.BringToFront();
-		}
-
-		private void ThemesButton_Click( object sender, EventArgs e )
-		{
-			ThemesPanel.BringToFront();
-		}
-
-		private void LockScreenButton_Click( object sender, EventArgs e )
-		{
-			LockScreenPanel.BringToFront();
-		}
-
-		private void ColorsButton_Click( object sender, EventArgs e )
-		{
-			ColorsPanel.BringToFront();
-		}
-
-		private void BackgroundButton_Click( object sender, EventArgs e )
-		{
-			BackgroundPanel.BringToFront();
-		}
+		#endregion
 	}
 }
