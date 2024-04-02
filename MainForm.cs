@@ -13,8 +13,6 @@ namespace WinThemeChange
 		const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
 		const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
 
-		private Panel Instance;
-
 		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
 		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
 		static void EnableTransparency( bool enable ) => Registry.SetValue( personalization, "EnableTransparency", enable ? 1 : 0 );
@@ -113,63 +111,47 @@ namespace WinThemeChange
 		public MainForm()
 		{
 			InitializeComponent();
-			Instance = BackgroundPanel;
+			BackgroundPanel.BringToFront();
 		}
 
 		private void ExperimentalButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			ExperimentalPanel.Visible = true;
-			Instance = ExperimentalPanel;
+			ExperimentalPanel.BringToFront();
 		}
 
 		private void TaskbarButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			TaskbarPanel.Visible = true;
-			Instance = TaskbarPanel;
+			TaskbarPanel.BringToFront();
 		}
 
 		private void StartButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			StartPanel.Visible = true;
-			Instance = StartPanel;
+			StartPanel.BringToFront();
 		}
 
 		private void FontsButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			FontsPanel.Visible = true;
-			Instance = FontsPanel;
+			FontsPanel.BringToFront();
 		}
 
 		private void ThemesButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			ThemesPanel.Visible = true;
-			Instance = ThemesPanel;
+			ThemesPanel.BringToFront();
 		}
 
 		private void LockScreenButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			LockScreenPanel.Visible = true;
-			Instance = LockScreenPanel;
+			LockScreenPanel.BringToFront();
 		}
 
 		private void ColorsButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			ColorsPanel.Visible = true;
-			Instance = ColorsPanel;
+			ColorsPanel.BringToFront();
 		}
 
 		private void BackgroundButton_Click( object sender, EventArgs e )
 		{
-			Instance.Visible = false;
-			BackgroundPanel.Visible = true;
-			Instance = BackgroundPanel;
+			BackgroundPanel.BringToFront();
 		}
 	}
 }
