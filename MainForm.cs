@@ -2,6 +2,8 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace WinThemeChange
@@ -12,17 +14,32 @@ namespace WinThemeChange
 		const string personalization = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
 		const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
 		const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
+		const int SPI_SETDESKWALLPAPER = 20;
+		const int SPIF_UPDATEINIFILE = 1;
+		const int SPIF_SENDCHANGE = 2;
+
+		public MainForm()
+		{
+			InitializeComponent();
+			BackgroundPanel.BringToFront();
+			string wallpaper = GetWallpaper();
+			if ( File.Exists( wallpaper ) )
+			{
+				WallpaperImage.BackgroundImage = Image.FromFile( wallpaper );
+				WallpaperImage.BackgroundImageLayout = ImageLayout.Zoom;
+			}
+			else
+			{
+				WallpaperImage.BackColor = Color.Black;
+			}
+		}
+
+		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
+		static extern int SystemParametersInfo( int action, int param, string plvParam, int fuWinIni );
 
 		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
 		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
 		static void EnableTransparency( bool enable ) => Registry.SetValue( personalization, "EnableTransparency", enable ? 1 : 0 );
-
-		static void DisableWatermark()
-		{
-			// Use both in case the old one still works
-			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation", "NotificationDisabled", 1 );
-			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
-		}
 
 		static void RestartExplorer()
 		{
@@ -34,6 +51,17 @@ namespace WinThemeChange
 					break;
 				}
 			}
+		}
+
+		static string GetWallpaper()
+		{
+			string path = ( string ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "WallPaper", "" );
+			return path;
+		}
+
+		static void SetWallpaper()
+		{
+			
 		}
 
 		static void EnableAutoColors()
@@ -108,10 +136,11 @@ namespace WinThemeChange
 			return final;
 		}
 
-		public MainForm()
+		static void DisableWatermark()
 		{
-			InitializeComponent();
-			BackgroundPanel.BringToFront();
+			// Use both in case the old one still works
+			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation", "NotificationDisabled", 1 );
+			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
 		}
 
 		#region LeftSide

@@ -38,21 +38,25 @@
 			this.LockScreenButton = new System.Windows.Forms.Button();
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
+			this.BackgroundPanel = new System.Windows.Forms.Panel();
+			this.WallpaperImage = new System.Windows.Forms.PictureBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.ExperimentalPanel = new System.Windows.Forms.Panel();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.DisableWatermarkButton = new System.Windows.Forms.Button();
+			this.FontsPanel = new System.Windows.Forms.Panel();
 			this.TaskbarPanel = new System.Windows.Forms.Panel();
 			this.StartPanel = new System.Windows.Forms.Panel();
-			this.FontsPanel = new System.Windows.Forms.Panel();
 			this.ThemesPanel = new System.Windows.Forms.Panel();
 			this.LockScreenPanel = new System.Windows.Forms.Panel();
 			this.ColorsPanel = new System.Windows.Forms.Panel();
-			this.BackgroundPanel = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.BackgroundPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
 			this.ExperimentalPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -63,6 +67,8 @@
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.splitContainer1.IsSplitterFixed = true;
 			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
 			this.splitContainer1.Name = "splitContainer1";
 			// 
@@ -79,6 +85,7 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ExperimentalPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.FontsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
@@ -86,7 +93,6 @@
 			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
 			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
 			this.splitContainer1.SplitterDistance = 303;
 			this.splitContainer1.TabIndex = 13;
@@ -179,6 +185,41 @@
 			this.BackgroundButton.UseVisualStyleBackColor = true;
 			this.BackgroundButton.Click += new System.EventHandler(this.BackgroundButton_Click);
 			// 
+			// BackgroundPanel
+			// 
+			this.BackgroundPanel.AutoScroll = true;
+			this.BackgroundPanel.BackColor = System.Drawing.Color.Black;
+			this.BackgroundPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.BackgroundPanel.Controls.Add(this.WallpaperImage);
+			this.BackgroundPanel.Controls.Add(this.label3);
+			this.BackgroundPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.BackgroundPanel.Location = new System.Drawing.Point(0, 0);
+			this.BackgroundPanel.Name = "BackgroundPanel";
+			this.BackgroundPanel.Size = new System.Drawing.Size(443, 559);
+			this.BackgroundPanel.TabIndex = 0;
+			// 
+			// WallpaperImage
+			// 
+			this.WallpaperImage.Image = global::WinThemeChange.Properties.Resources.wallpaper_foreground;
+			this.WallpaperImage.InitialImage = null;
+			this.WallpaperImage.Location = new System.Drawing.Point(57, 62);
+			this.WallpaperImage.Name = "WallpaperImage";
+			this.WallpaperImage.Size = new System.Drawing.Size(320, 180);
+			this.WallpaperImage.TabIndex = 4;
+			this.WallpaperImage.TabStop = false;
+			// 
+			// label3
+			// 
+			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label3.ForeColor = System.Drawing.Color.White;
+			this.label3.Location = new System.Drawing.Point(123, 5);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(202, 39);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "Background";
+			// 
 			// ExperimentalPanel
 			// 
 			this.ExperimentalPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -191,6 +232,28 @@
 			this.ExperimentalPanel.Size = new System.Drawing.Size(443, 559);
 			this.ExperimentalPanel.TabIndex = 1;
 			// 
+			// label2
+			// 
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.White;
+			this.label2.Location = new System.Drawing.Point(21, 50);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(381, 40);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "These features may not work as intended or at all. Use at your own risk.";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
+			this.label1.Location = new System.Drawing.Point(35, 7);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(367, 39);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Experimental Features";
+			// 
 			// DisableWatermarkButton
 			// 
 			this.DisableWatermarkButton.Location = new System.Drawing.Point(3, 102);
@@ -200,6 +263,15 @@
 			this.DisableWatermarkButton.Text = "Disable Watermark";
 			this.DisableWatermarkButton.UseVisualStyleBackColor = true;
 			this.DisableWatermarkButton.Click += new System.EventHandler(this.DisableWatermarkButton_Click);
+			// 
+			// FontsPanel
+			// 
+			this.FontsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.FontsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.FontsPanel.Location = new System.Drawing.Point(0, 0);
+			this.FontsPanel.Name = "FontsPanel";
+			this.FontsPanel.Size = new System.Drawing.Size(443, 559);
+			this.FontsPanel.TabIndex = 1;
 			// 
 			// TaskbarPanel
 			// 
@@ -218,15 +290,6 @@
 			this.StartPanel.Name = "StartPanel";
 			this.StartPanel.Size = new System.Drawing.Size(443, 559);
 			this.StartPanel.TabIndex = 1;
-			// 
-			// FontsPanel
-			// 
-			this.FontsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.FontsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.FontsPanel.Location = new System.Drawing.Point(0, 0);
-			this.FontsPanel.Name = "FontsPanel";
-			this.FontsPanel.Size = new System.Drawing.Size(443, 559);
-			this.FontsPanel.TabIndex = 1;
 			// 
 			// ThemesPanel
 			// 
@@ -255,37 +318,6 @@
 			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
 			this.ColorsPanel.TabIndex = 1;
 			// 
-			// BackgroundPanel
-			// 
-			this.BackgroundPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.BackgroundPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.BackgroundPanel.Location = new System.Drawing.Point(0, 0);
-			this.BackgroundPanel.Name = "BackgroundPanel";
-			this.BackgroundPanel.Size = new System.Drawing.Size(443, 559);
-			this.BackgroundPanel.TabIndex = 0;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.Location = new System.Drawing.Point(35, 7);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(367, 39);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Experimental Features";
-			// 
-			// label2
-			// 
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.ForeColor = System.Drawing.Color.White;
-			this.label2.Location = new System.Drawing.Point(21, 50);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(381, 40);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "These features may not work as intended or at all. Use at your own risk.";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,6 +334,9 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.BackgroundPanel.ResumeLayout(false);
+			this.BackgroundPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
 			this.ExperimentalPanel.ResumeLayout(false);
 			this.ExperimentalPanel.PerformLayout();
 			this.ResumeLayout(false);
@@ -330,6 +365,8 @@
 		private System.Windows.Forms.Panel BackgroundPanel;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.PictureBox WallpaperImage;
 	}
 }
 
