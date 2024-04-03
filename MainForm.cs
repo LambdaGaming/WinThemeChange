@@ -59,11 +59,6 @@ namespace WinThemeChange
 			return path;
 		}
 
-		static void SetWallpaper()
-		{
-			
-		}
-
 		static void EnableAutoColors()
 		{
 			Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 1 );
@@ -136,6 +131,15 @@ namespace WinThemeChange
 			return final;
 		}
 
+		static void UpdateWallpaperStyle( string style )
+		{
+			Registry.SetValue( currentUser + @"Control Panel\Desktop", "WallpaperStyle", style );
+			if ( style == "1" )
+				Registry.SetValue( currentUser + @"Control Panel\Desktop", "TileWallpaper", "1" );
+			else
+				Registry.SetValue( currentUser + @"Control Panel\Desktop", "TileWallpaper", "0" );
+		}
+
 		static void DisableWatermark()
 		{
 			// Use both in case the old one still works
@@ -155,6 +159,44 @@ namespace WinThemeChange
 		#endregion
 
 		#region RightSide
+		private void WallpaperButton_Click( object sender, EventArgs e )
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.Filter = "Supported formats (*.jpg *.jpeg *.bmp *.dib *.png *.jfif *.jpe *.gif *.tif *.tiff *.wdp *.heic *.heif *.heics *.heifs *.avci *.avcs *.avif *.avifs)|*.jpg;*.jpeg;*.bmp;*.dib;*.png;*.jfif;*.jpe;*.gif;*.tif;*.tiff;*.wdp;*.heic;*.heif;*.heics;*.heifs;*.avci;*.avcs;*.avif;*.avifs";
+			dialog.InitialDirectory = "C:\\Windows\\Web\\Wallpaper";
+			if ( dialog.ShowDialog() == DialogResult.OK )
+			{
+				SystemParametersInfo( SPI_SETDESKWALLPAPER, 0, dialog.FileName, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
+				WallpaperImage.BackgroundImage = Image.FromFile( GetWallpaper() );
+			}
+		}
+
+		private void WallpaperFit_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			switch ( WallpaperFit.SelectedIndex )
+			{
+				case 0:
+					UpdateWallpaperStyle( "0" );
+					break;
+				case 1:
+					UpdateWallpaperStyle( "1" );
+					break;
+				case 2:
+					UpdateWallpaperStyle( "2" );
+					break;
+				case 3:
+					UpdateWallpaperStyle( "6" );
+					break;
+				case 4:
+					UpdateWallpaperStyle( "10" );
+					break;
+				case 5:
+					UpdateWallpaperStyle( "22" );
+					break;
+			}
+			SystemParametersInfo( SPI_SETDESKWALLPAPER, 0, GetWallpaper(), SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
+		}
+
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
 		{
 			DisableWatermark();
