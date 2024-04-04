@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -24,6 +23,10 @@ namespace WinThemeChange
 			InitializeComponent();
 			BackgroundPanel.BringToFront();
 			UpdateImages();
+			SystemDarkMode.Checked = ( int ) Registry.GetValue( personalization, "SystemUsesLightTheme", 0 ) == 0;
+			AppDarkMode.Checked = ( int ) Registry.GetValue( personalization, "AppsUseLightTheme", 0 ) == 0;
+			TransparencyEffects.Checked = ( int ) Registry.GetValue( personalization, "EnableTransparency", 0 ) == 1;
+			AccentBackground.Checked = ( int ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 ) == 1;
 		}
 
 		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
@@ -50,68 +53,10 @@ namespace WinThemeChange
 			ColorImage.BackColor = background;
 		}
 
-		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
-		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
-		static void EnableTransparency( bool enable ) => Registry.SetValue( personalization, "EnableTransparency", enable ? 1 : 0 );
-
-		static void RestartExplorer()
-		{
-			foreach ( Process proc in Process.GetProcesses() )
-			{
-				if ( proc.ProcessName == "explorer" )
-				{
-					proc.Kill();
-					break;
-				}
-			}
-		}
-
-		static string GetWallpaper()
+		private static string GetWallpaper()
 		{
 			string path = ( string ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "WallPaper", "" );
 			return path;
-		}
-
-		static void EnableAutoColors()
-		{
-			Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 1 );
-			MessageBox.Show( "You will need to reapply your wallpaper for this setting to take effect." );
-		}
-
-		static Color AdjustTaskbarColor( Color color )
-		{
-			return Color.FromArgb( ( int ) ( color.R * 0.5 ), ( int ) ( color.G * 0.5 ), ( int ) ( color.B * 0.5 ) );
-		}
-
-		void CustomThemeColor()
-		{
-			colorDialog.ShowDialog();
-			Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 );
-
-			// App colors
-			int color = RGBToBGR( colorDialog.Color );
-			Registry.SetValue( dwm, "ColorPrevalence", 1 );
-			Registry.SetValue( dwm, "AccentColor", color, RegistryValueKind.DWord );
-			Registry.SetValue( accent, "AccentColorMenu", color, RegistryValueKind.DWord );
-			Registry.SetValue( accent, "StartColorMenu", color, RegistryValueKind.DWord );
-
-			// Taskbar colors
-			Registry.SetValue( personalization, "ColorPrevalence", 1 );
-			Registry.SetValue( accent, "AccentPalette", CreatePalette( AdjustTaskbarColor( colorDialog.Color ) ), RegistryValueKind.Binary );
-		}
-
-		void SetTaskbarColor()
-		{
-			colorDialog.ShowDialog();
-			Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 );
-			Registry.SetValue( personalization, "ColorPrevalence", 1 );
-			Registry.SetValue( accent, "AccentPalette", CreatePalette( AdjustTaskbarColor( colorDialog.Color ) ), RegistryValueKind.Binary );
-		}
-
-		static void ResetThemeColors()
-		{
-			Registry.SetValue( dwm, "ColorPrevalence", 0 );
-			Registry.SetValue( personalization, "ColorPrevalence", 0 );
 		}
 
 		static int RGBToBGR( Color color )
@@ -144,7 +89,7 @@ namespace WinThemeChange
 			return final;
 		}
 
-		static void UpdateWallpaperStyle( string style )
+		private static void UpdateWallpaperStyle( string style )
 		{
 			Registry.SetValue( currentUser + @"Control Panel\Desktop", "WallpaperStyle", style );
 			if ( style == "1" )
@@ -211,6 +156,46 @@ namespace WinThemeChange
 			SetSysColors( elements.Length, elements, colors );
 			Registry.SetValue( currentUser + @"Control Panel\Colors", "Background", string.Format( "{0} {1} {2}", colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B ) );
 			UpdateImages();
+		}
+
+		private void SystemDarkMode_CheckedChanged( object sender, EventArgs e )
+		{
+			Registry.SetValue( personalization, "SystemUsesLightTheme", SystemDarkMode.Checked ? 0 : 1 );
+		}
+
+		private void AppDarkMode_CheckedChanged( object sender, EventArgs e )
+		{
+			Registry.SetValue( personalization, "AppsUseLightTheme", SystemDarkMode.Checked ? 0 : 1 );
+		}
+
+		private void TransparencyEffects_CheckedChanged( object sender, EventArgs e )
+		{
+			Registry.SetValue( personalization, "EnableTransparency", TransparencyEffects.Checked ? 1 : 0 );
+		}
+
+		private void AccentBackground_CheckedChanged( object sender, EventArgs e )
+		{
+			// Wallpaper needs reapplied for setting to take effect
+			Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", AccentBackground.Checked ? 1 : 0 );
+			SystemParametersInfo( SPI_SETDESKWALLPAPER, 0, GetWallpaper(), SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
+		}
+
+		private void ColorButton_Click( object sender, EventArgs e )
+		{
+			colorDialog.ShowDialog();
+			Registry.SetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 );
+
+			// App colors
+			int color = RGBToBGR( colorDialog.Color );
+			Registry.SetValue( dwm, "ColorPrevalence", 1 );
+			Registry.SetValue( dwm, "AccentColor", color, RegistryValueKind.DWord );
+			Registry.SetValue( accent, "AccentColorMenu", color, RegistryValueKind.DWord );
+			Registry.SetValue( accent, "StartColorMenu", color, RegistryValueKind.DWord );
+
+			// Taskbar colors
+			Color adjusted = Color.FromArgb( ( int ) ( colorDialog.Color.R * 0.5 ), ( int ) ( colorDialog.Color.G * 0.5 ), ( int ) ( colorDialog.Color.B * 0.5 ) );
+			Registry.SetValue( personalization, "ColorPrevalence", 1 );
+			Registry.SetValue( accent, "AccentPalette", CreatePalette( adjusted ), RegistryValueKind.Binary );
 		}
 
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )

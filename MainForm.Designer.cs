@@ -38,6 +38,18 @@
 			this.LockScreenButton = new System.Windows.Forms.Button();
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
+			this.ColorsPanel = new System.Windows.Forms.Panel();
+			this.AccentBackground = new System.Windows.Forms.CheckBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.TransparencyEffects = new System.Windows.Forms.CheckBox();
+			this.AppDarkMode = new System.Windows.Forms.CheckBox();
+			this.SystemDarkMode = new System.Windows.Forms.CheckBox();
+			this.ColorImage = new System.Windows.Forms.PictureBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.ExperimentalPanel = new System.Windows.Forms.Panel();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.DisableWatermarkButton = new System.Windows.Forms.Button();
 			this.BackgroundPanel = new System.Windows.Forms.Panel();
 			this.BackgroundColorButton = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
@@ -45,27 +57,21 @@
 			this.WallpaperButton = new System.Windows.Forms.Button();
 			this.WallpaperImage = new System.Windows.Forms.PictureBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.ExperimentalPanel = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.DisableWatermarkButton = new System.Windows.Forms.Button();
 			this.FontsPanel = new System.Windows.Forms.Panel();
 			this.TaskbarPanel = new System.Windows.Forms.Panel();
 			this.StartPanel = new System.Windows.Forms.Panel();
 			this.ThemesPanel = new System.Windows.Forms.Panel();
 			this.LockScreenPanel = new System.Windows.Forms.Panel();
-			this.ColorsPanel = new System.Windows.Forms.Panel();
-			this.label5 = new System.Windows.Forms.Label();
-			this.ColorImage = new System.Windows.Forms.PictureBox();
+			this.ColorButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.BackgroundPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
-			this.ExperimentalPanel.SuspendLayout();
 			this.ColorsPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).BeginInit();
+			this.ExperimentalPanel.SuspendLayout();
+			this.BackgroundPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// colorDialog
@@ -193,6 +199,154 @@
 			this.BackgroundButton.UseVisualStyleBackColor = true;
 			this.BackgroundButton.Click += new System.EventHandler(this.BackgroundButton_Click);
 			// 
+			// ColorsPanel
+			// 
+			this.ColorsPanel.AutoScroll = true;
+			this.ColorsPanel.BackColor = System.Drawing.Color.Black;
+			this.ColorsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.ColorsPanel.Controls.Add(this.ColorButton);
+			this.ColorsPanel.Controls.Add(this.AccentBackground);
+			this.ColorsPanel.Controls.Add(this.label6);
+			this.ColorsPanel.Controls.Add(this.TransparencyEffects);
+			this.ColorsPanel.Controls.Add(this.AppDarkMode);
+			this.ColorsPanel.Controls.Add(this.SystemDarkMode);
+			this.ColorsPanel.Controls.Add(this.ColorImage);
+			this.ColorsPanel.Controls.Add(this.label5);
+			this.ColorsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ColorsPanel.Location = new System.Drawing.Point(0, 0);
+			this.ColorsPanel.Name = "ColorsPanel";
+			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
+			this.ColorsPanel.TabIndex = 1;
+			// 
+			// AccentBackground
+			// 
+			this.AccentBackground.AutoSize = true;
+			this.AccentBackground.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.AccentBackground.ForeColor = System.Drawing.Color.White;
+			this.AccentBackground.Location = new System.Drawing.Point(57, 410);
+			this.AccentBackground.Name = "AccentBackground";
+			this.AccentBackground.Size = new System.Drawing.Size(331, 21);
+			this.AccentBackground.TabIndex = 10;
+			this.AccentBackground.Text = "Automatically pick accent color from background";
+			this.AccentBackground.UseVisualStyleBackColor = true;
+			this.AccentBackground.CheckedChanged += new System.EventHandler(this.AccentBackground_CheckedChanged);
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label6.ForeColor = System.Drawing.Color.White;
+			this.label6.Location = new System.Drawing.Point(53, 375);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(212, 20);
+			this.label6.TabIndex = 9;
+			this.label6.Text = "Choose your accent color";
+			// 
+			// TransparencyEffects
+			// 
+			this.TransparencyEffects.AutoSize = true;
+			this.TransparencyEffects.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TransparencyEffects.ForeColor = System.Drawing.Color.White;
+			this.TransparencyEffects.Location = new System.Drawing.Point(57, 327);
+			this.TransparencyEffects.Name = "TransparencyEffects";
+			this.TransparencyEffects.Size = new System.Drawing.Size(204, 21);
+			this.TransparencyEffects.TabIndex = 8;
+			this.TransparencyEffects.Text = "Enable transparency effects";
+			this.TransparencyEffects.UseVisualStyleBackColor = true;
+			this.TransparencyEffects.CheckedChanged += new System.EventHandler(this.TransparencyEffects_CheckedChanged);
+			// 
+			// AppDarkMode
+			// 
+			this.AppDarkMode.AutoSize = true;
+			this.AppDarkMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.AppDarkMode.ForeColor = System.Drawing.Color.White;
+			this.AppDarkMode.Location = new System.Drawing.Point(57, 300);
+			this.AppDarkMode.Name = "AppDarkMode";
+			this.AppDarkMode.Size = new System.Drawing.Size(170, 21);
+			this.AppDarkMode.TabIndex = 7;
+			this.AppDarkMode.Text = "Enable app dark mode";
+			this.AppDarkMode.UseVisualStyleBackColor = true;
+			this.AppDarkMode.CheckedChanged += new System.EventHandler(this.AppDarkMode_CheckedChanged);
+			// 
+			// SystemDarkMode
+			// 
+			this.SystemDarkMode.AutoSize = true;
+			this.SystemDarkMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SystemDarkMode.ForeColor = System.Drawing.Color.White;
+			this.SystemDarkMode.Location = new System.Drawing.Point(57, 273);
+			this.SystemDarkMode.Name = "SystemDarkMode";
+			this.SystemDarkMode.Size = new System.Drawing.Size(190, 21);
+			this.SystemDarkMode.TabIndex = 6;
+			this.SystemDarkMode.Text = "Enable system dark mode";
+			this.SystemDarkMode.UseVisualStyleBackColor = true;
+			this.SystemDarkMode.CheckedChanged += new System.EventHandler(this.SystemDarkMode_CheckedChanged);
+			// 
+			// ColorImage
+			// 
+			this.ColorImage.Image = global::WinThemeChange.Properties.Resources.wallpaper_foreground;
+			this.ColorImage.InitialImage = null;
+			this.ColorImage.Location = new System.Drawing.Point(57, 62);
+			this.ColorImage.Name = "ColorImage";
+			this.ColorImage.Size = new System.Drawing.Size(320, 180);
+			this.ColorImage.TabIndex = 5;
+			this.ColorImage.TabStop = false;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.ForeColor = System.Drawing.Color.White;
+			this.label5.Location = new System.Drawing.Point(154, 5);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(118, 39);
+			this.label5.TabIndex = 2;
+			this.label5.Text = "Colors";
+			// 
+			// ExperimentalPanel
+			// 
+			this.ExperimentalPanel.BackColor = System.Drawing.Color.Black;
+			this.ExperimentalPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.ExperimentalPanel.Controls.Add(this.label2);
+			this.ExperimentalPanel.Controls.Add(this.label1);
+			this.ExperimentalPanel.Controls.Add(this.DisableWatermarkButton);
+			this.ExperimentalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ExperimentalPanel.Location = new System.Drawing.Point(0, 0);
+			this.ExperimentalPanel.Name = "ExperimentalPanel";
+			this.ExperimentalPanel.Size = new System.Drawing.Size(443, 559);
+			this.ExperimentalPanel.TabIndex = 1;
+			// 
+			// label2
+			// 
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.ForeColor = System.Drawing.Color.White;
+			this.label2.Location = new System.Drawing.Point(21, 50);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(381, 40);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "These features may not work as intended or at all. Use at your own risk.";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
+			this.label1.Location = new System.Drawing.Point(35, 7);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(367, 39);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Experimental Features";
+			// 
+			// DisableWatermarkButton
+			// 
+			this.DisableWatermarkButton.Location = new System.Drawing.Point(3, 102);
+			this.DisableWatermarkButton.Name = "DisableWatermarkButton";
+			this.DisableWatermarkButton.Size = new System.Drawing.Size(125, 34);
+			this.DisableWatermarkButton.TabIndex = 0;
+			this.DisableWatermarkButton.Text = "Disable Watermark";
+			this.DisableWatermarkButton.UseVisualStyleBackColor = true;
+			this.DisableWatermarkButton.Click += new System.EventHandler(this.DisableWatermarkButton_Click);
+			// 
 			// BackgroundPanel
 			// 
 			this.BackgroundPanel.AutoScroll = true;
@@ -281,51 +435,6 @@
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Background";
 			// 
-			// ExperimentalPanel
-			// 
-			this.ExperimentalPanel.BackColor = System.Drawing.Color.Black;
-			this.ExperimentalPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.ExperimentalPanel.Controls.Add(this.label2);
-			this.ExperimentalPanel.Controls.Add(this.label1);
-			this.ExperimentalPanel.Controls.Add(this.DisableWatermarkButton);
-			this.ExperimentalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ExperimentalPanel.Location = new System.Drawing.Point(0, 0);
-			this.ExperimentalPanel.Name = "ExperimentalPanel";
-			this.ExperimentalPanel.Size = new System.Drawing.Size(443, 559);
-			this.ExperimentalPanel.TabIndex = 1;
-			// 
-			// label2
-			// 
-			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.ForeColor = System.Drawing.Color.White;
-			this.label2.Location = new System.Drawing.Point(21, 50);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(381, 40);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "These features may not work as intended or at all. Use at your own risk.";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.Location = new System.Drawing.Point(35, 7);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(367, 39);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Experimental Features";
-			// 
-			// DisableWatermarkButton
-			// 
-			this.DisableWatermarkButton.Location = new System.Drawing.Point(3, 102);
-			this.DisableWatermarkButton.Name = "DisableWatermarkButton";
-			this.DisableWatermarkButton.Size = new System.Drawing.Size(125, 34);
-			this.DisableWatermarkButton.TabIndex = 0;
-			this.DisableWatermarkButton.Text = "Disable Watermark";
-			this.DisableWatermarkButton.UseVisualStyleBackColor = true;
-			this.DisableWatermarkButton.Click += new System.EventHandler(this.DisableWatermarkButton_Click);
-			// 
 			// FontsPanel
 			// 
 			this.FontsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -371,38 +480,16 @@
 			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
 			this.LockScreenPanel.TabIndex = 1;
 			// 
-			// ColorsPanel
+			// ColorButton
 			// 
-			this.ColorsPanel.BackColor = System.Drawing.Color.Black;
-			this.ColorsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.ColorsPanel.Controls.Add(this.ColorImage);
-			this.ColorsPanel.Controls.Add(this.label5);
-			this.ColorsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ColorsPanel.Location = new System.Drawing.Point(0, 0);
-			this.ColorsPanel.Name = "ColorsPanel";
-			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
-			this.ColorsPanel.TabIndex = 1;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.ForeColor = System.Drawing.Color.White;
-			this.label5.Location = new System.Drawing.Point(154, 5);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(118, 39);
-			this.label5.TabIndex = 2;
-			this.label5.Text = "Colors";
-			// 
-			// ColorImage
-			// 
-			this.ColorImage.Image = global::WinThemeChange.Properties.Resources.wallpaper_foreground;
-			this.ColorImage.InitialImage = null;
-			this.ColorImage.Location = new System.Drawing.Point(57, 50);
-			this.ColorImage.Name = "ColorImage";
-			this.ColorImage.Size = new System.Drawing.Size(320, 180);
-			this.ColorImage.TabIndex = 5;
-			this.ColorImage.TabStop = false;
+			this.ColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ColorButton.Location = new System.Drawing.Point(57, 437);
+			this.ColorButton.Name = "ColorButton";
+			this.ColorButton.Size = new System.Drawing.Size(103, 27);
+			this.ColorButton.TabIndex = 11;
+			this.ColorButton.Text = "Select color";
+			this.ColorButton.UseVisualStyleBackColor = true;
+			this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
 			// 
 			// MainForm
 			// 
@@ -420,14 +507,14 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			this.BackgroundPanel.ResumeLayout(false);
-			this.BackgroundPanel.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
-			this.ExperimentalPanel.ResumeLayout(false);
-			this.ExperimentalPanel.PerformLayout();
 			this.ColorsPanel.ResumeLayout(false);
 			this.ColorsPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).EndInit();
+			this.ExperimentalPanel.ResumeLayout(false);
+			this.ExperimentalPanel.PerformLayout();
+			this.BackgroundPanel.ResumeLayout(false);
+			this.BackgroundPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -462,6 +549,12 @@
 		private System.Windows.Forms.Button BackgroundColorButton;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.PictureBox ColorImage;
+		private System.Windows.Forms.CheckBox SystemDarkMode;
+		private System.Windows.Forms.CheckBox AppDarkMode;
+		private System.Windows.Forms.CheckBox TransparencyEffects;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.CheckBox AccentBackground;
+		private System.Windows.Forms.Button ColorButton;
 	}
 }
 

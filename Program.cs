@@ -6,7 +6,7 @@ namespace WinThemeChange
 {
 	internal static class Program
 	{
-		static bool IsAdmin() => new WindowsPrincipal( WindowsIdentity.GetCurrent() ).IsInRole( WindowsBuiltInRole.Administrator );
+		private static bool IsAdmin() => new WindowsPrincipal( WindowsIdentity.GetCurrent() ).IsInRole( WindowsBuiltInRole.Administrator );
 
 		[STAThread]
 		static void Main()
