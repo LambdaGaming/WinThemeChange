@@ -39,6 +39,7 @@
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
 			this.BackgroundPanel = new System.Windows.Forms.Panel();
+			this.BackgroundColorButton = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
 			this.WallpaperFit = new System.Windows.Forms.ComboBox();
 			this.WallpaperButton = new System.Windows.Forms.Button();
@@ -54,7 +55,8 @@
 			this.ThemesPanel = new System.Windows.Forms.Panel();
 			this.LockScreenPanel = new System.Windows.Forms.Panel();
 			this.ColorsPanel = new System.Windows.Forms.Panel();
-			this.BackgroundColorButton = new System.Windows.Forms.Button();
+			this.label5 = new System.Windows.Forms.Label();
+			this.ColorImage = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +64,8 @@
 			this.BackgroundPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
 			this.ExperimentalPanel.SuspendLayout();
+			this.ColorsPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// colorDialog
@@ -89,14 +93,14 @@
 			// 
 			// splitContainer1.Panel2
 			// 
-			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
+			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ExperimentalPanel);
+			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.FontsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.StartPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
 			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
 			this.splitContainer1.SplitterDistance = 303;
 			this.splitContainer1.TabIndex = 13;
@@ -206,6 +210,17 @@
 			this.BackgroundPanel.Size = new System.Drawing.Size(443, 559);
 			this.BackgroundPanel.TabIndex = 0;
 			// 
+			// BackgroundColorButton
+			// 
+			this.BackgroundColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BackgroundColorButton.Location = new System.Drawing.Point(57, 308);
+			this.BackgroundColorButton.Name = "BackgroundColorButton";
+			this.BackgroundColorButton.Size = new System.Drawing.Size(114, 29);
+			this.BackgroundColorButton.TabIndex = 8;
+			this.BackgroundColorButton.Text = "Select Color";
+			this.BackgroundColorButton.UseVisualStyleBackColor = true;
+			this.BackgroundColorButton.Click += new System.EventHandler(this.BackgroundColorButton_Click);
+			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -268,6 +283,7 @@
 			// 
 			// ExperimentalPanel
 			// 
+			this.ExperimentalPanel.BackColor = System.Drawing.Color.Black;
 			this.ExperimentalPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.ExperimentalPanel.Controls.Add(this.label2);
 			this.ExperimentalPanel.Controls.Add(this.label1);
@@ -357,23 +373,36 @@
 			// 
 			// ColorsPanel
 			// 
+			this.ColorsPanel.BackColor = System.Drawing.Color.Black;
 			this.ColorsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.ColorsPanel.Controls.Add(this.ColorImage);
+			this.ColorsPanel.Controls.Add(this.label5);
 			this.ColorsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ColorsPanel.Location = new System.Drawing.Point(0, 0);
 			this.ColorsPanel.Name = "ColorsPanel";
 			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
 			this.ColorsPanel.TabIndex = 1;
 			// 
-			// BackgroundColorButton
+			// label5
 			// 
-			this.BackgroundColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.BackgroundColorButton.Location = new System.Drawing.Point(57, 308);
-			this.BackgroundColorButton.Name = "BackgroundColorButton";
-			this.BackgroundColorButton.Size = new System.Drawing.Size(114, 29);
-			this.BackgroundColorButton.TabIndex = 8;
-			this.BackgroundColorButton.Text = "Select Color";
-			this.BackgroundColorButton.UseVisualStyleBackColor = true;
-			this.BackgroundColorButton.Click += new System.EventHandler(this.BackgroundColorButton_Click);
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.ForeColor = System.Drawing.Color.White;
+			this.label5.Location = new System.Drawing.Point(154, 5);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(118, 39);
+			this.label5.TabIndex = 2;
+			this.label5.Text = "Colors";
+			// 
+			// ColorImage
+			// 
+			this.ColorImage.Image = global::WinThemeChange.Properties.Resources.wallpaper_foreground;
+			this.ColorImage.InitialImage = null;
+			this.ColorImage.Location = new System.Drawing.Point(57, 50);
+			this.ColorImage.Name = "ColorImage";
+			this.ColorImage.Size = new System.Drawing.Size(320, 180);
+			this.ColorImage.TabIndex = 5;
+			this.ColorImage.TabStop = false;
 			// 
 			// MainForm
 			// 
@@ -396,6 +425,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
 			this.ExperimentalPanel.ResumeLayout(false);
 			this.ExperimentalPanel.PerformLayout();
+			this.ColorsPanel.ResumeLayout(false);
+			this.ColorsPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -428,6 +460,8 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox WallpaperFit;
 		private System.Windows.Forms.Button BackgroundColorButton;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.PictureBox ColorImage;
 	}
 }
 

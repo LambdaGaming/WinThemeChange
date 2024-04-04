@@ -23,20 +23,32 @@ namespace WinThemeChange
 		{
 			InitializeComponent();
 			BackgroundPanel.BringToFront();
-			string wallpaper = GetWallpaper();
-			if ( File.Exists( wallpaper ) )
-			{
-				WallpaperImage.BackgroundImage = Image.FromFile( wallpaper );
-				WallpaperImage.BackgroundImageLayout = ImageLayout.Zoom;
-			}
-			WallpaperImage.BackColor = GetBackgroundColor();
+			UpdateImages();
 		}
 
 		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
-		static extern int SystemParametersInfo( int action, int param, string plvParam, int fuWinIni );
+		private static extern int SystemParametersInfo( int action, int param, string plvParam, int fuWinIni );
 
 		[DllImport( "user32.dll" )]
-		static extern bool SetSysColors( int cElements, int[] lpaElements, int[] lpaRgbValues );
+		private static extern bool SetSysColors( int cElements, int[] lpaElements, int[] lpaRgbValues );
+
+		private void UpdateImages()
+		{
+			string wallpaper = GetWallpaper();
+			if ( File.Exists( wallpaper ) )
+			{
+				Image img = Image.FromFile( wallpaper );
+				WallpaperImage.BackgroundImage = img;
+				WallpaperImage.BackgroundImageLayout = ImageLayout.Zoom;
+				ColorImage.BackgroundImage = img;
+				ColorImage.BackgroundImageLayout = ImageLayout.Zoom;
+			}
+			string reg = ( string ) Registry.GetValue( currentUser + @"Control Panel\Colors", "Background", "0 0 0" );
+			string[] colors = reg.Split( ' ' );
+			Color background = Color.FromArgb( int.Parse( colors[0] ), int.Parse( colors[1] ), int.Parse( colors[2] ) );
+			WallpaperImage.BackColor = background;
+			ColorImage.BackColor = background;
+		}
 
 		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
 		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
@@ -58,13 +70,6 @@ namespace WinThemeChange
 		{
 			string path = ( string ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "WallPaper", "" );
 			return path;
-		}
-
-		static Color GetBackgroundColor()
-		{
-			string reg = ( string ) Registry.GetValue( currentUser + @"Control Panel\Colors", "Background", "0 0 0" );
-			string[] colors = reg.Split( ' ' );
-			return Color.FromArgb( int.Parse( colors[0] ), int.Parse( colors[1] ), int.Parse( colors[2] ) );
 		}
 
 		static void EnableAutoColors()
@@ -168,7 +173,7 @@ namespace WinThemeChange
 			if ( dialog.ShowDialog() == DialogResult.OK )
 			{
 				SystemParametersInfo( SPI_SETDESKWALLPAPER, 0, dialog.FileName, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
-				WallpaperImage.BackgroundImage = Image.FromFile( GetWallpaper() );
+				UpdateImages();
 			}
 		}
 
@@ -205,7 +210,7 @@ namespace WinThemeChange
 			int[] colors = { ColorTranslator.ToWin32( colorDialog.Color ) };
 			SetSysColors( elements.Length, elements, colors );
 			Registry.SetValue( currentUser + @"Control Panel\Colors", "Background", string.Format( "{0} {1} {2}", colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B ) );
-			WallpaperImage.BackColor = colorDialog.Color;
+			UpdateImages();
 		}
 
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
