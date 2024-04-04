@@ -17,6 +17,7 @@ namespace WinThemeChange
 		const int SPI_SETDESKWALLPAPER = 20;
 		const int SPIF_UPDATEINIFILE = 1;
 		const int SPIF_SENDCHANGE = 2;
+		const int COLOR_DESKTOP = 1;
 
 		public MainForm()
 		{
@@ -28,14 +29,14 @@ namespace WinThemeChange
 				WallpaperImage.BackgroundImage = Image.FromFile( wallpaper );
 				WallpaperImage.BackgroundImageLayout = ImageLayout.Zoom;
 			}
-			else
-			{
-				WallpaperImage.BackColor = Color.Black;
-			}
+			WallpaperImage.BackColor = GetBackgroundColor();
 		}
 
 		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
 		static extern int SystemParametersInfo( int action, int param, string plvParam, int fuWinIni );
+
+		[DllImport( "user32.dll" )]
+		static extern bool SetSysColors( int cElements, int[] lpaElements, int[] lpaRgbValues );
 
 		static void EnableDarkMode( bool enable ) => Registry.SetValue( personalization, "SystemUsesLightTheme", enable ? 0 : 1 );
 		static void EnableAppDarkMode( bool enable ) => Registry.SetValue( personalization, "AppsUseLightTheme", enable ? 0 : 1 );
@@ -57,6 +58,13 @@ namespace WinThemeChange
 		{
 			string path = ( string ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "WallPaper", "" );
 			return path;
+		}
+
+		static Color GetBackgroundColor()
+		{
+			string reg = ( string ) Registry.GetValue( currentUser + @"Control Panel\Colors", "Background", "0 0 0" );
+			string[] colors = reg.Split( ' ' );
+			return Color.FromArgb( int.Parse( colors[0] ), int.Parse( colors[1] ), int.Parse( colors[2] ) );
 		}
 
 		static void EnableAutoColors()
@@ -140,13 +148,6 @@ namespace WinThemeChange
 				Registry.SetValue( currentUser + @"Control Panel\Desktop", "TileWallpaper", "0" );
 		}
 
-		static void DisableWatermark()
-		{
-			// Use both in case the old one still works
-			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation", "NotificationDisabled", 1 );
-			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
-		}
-
 		#region LeftSide
 		private void ExperimentalButton_Click( object sender, EventArgs e ) => ExperimentalPanel.BringToFront();
 		private void TaskbarButton_Click( object sender, EventArgs e ) => TaskbarPanel.BringToFront();
@@ -197,9 +198,21 @@ namespace WinThemeChange
 			SystemParametersInfo( SPI_SETDESKWALLPAPER, 0, GetWallpaper(), SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
 		}
 
+		private void BackgroundColorButton_Click( object sender, EventArgs e )
+		{
+			colorDialog.ShowDialog();
+			int[] elements = { COLOR_DESKTOP };
+			int[] colors = { ColorTranslator.ToWin32( colorDialog.Color ) };
+			SetSysColors( elements.Length, elements, colors );
+			Registry.SetValue( currentUser + @"Control Panel\Colors", "Background", string.Format( "{0} {1} {2}", colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B ) );
+			WallpaperImage.BackColor = colorDialog.Color;
+		}
+
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
 		{
-			DisableWatermark();
+			// Use both in case the old one still works
+			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation", "NotificationDisabled", 1 );
+			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
 		}
 		#endregion
 	}

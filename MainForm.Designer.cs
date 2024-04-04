@@ -39,6 +39,9 @@
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
 			this.BackgroundPanel = new System.Windows.Forms.Panel();
+			this.label4 = new System.Windows.Forms.Label();
+			this.WallpaperFit = new System.Windows.Forms.ComboBox();
+			this.WallpaperButton = new System.Windows.Forms.Button();
 			this.WallpaperImage = new System.Windows.Forms.PictureBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.ExperimentalPanel = new System.Windows.Forms.Panel();
@@ -51,9 +54,7 @@
 			this.ThemesPanel = new System.Windows.Forms.Panel();
 			this.LockScreenPanel = new System.Windows.Forms.Panel();
 			this.ColorsPanel = new System.Windows.Forms.Panel();
-			this.WallpaperButton = new System.Windows.Forms.Button();
-			this.WallpaperFit = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
+			this.BackgroundColorButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +194,7 @@
 			this.BackgroundPanel.AutoScroll = true;
 			this.BackgroundPanel.BackColor = System.Drawing.Color.Black;
 			this.BackgroundPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.BackgroundPanel.Controls.Add(this.BackgroundColorButton);
 			this.BackgroundPanel.Controls.Add(this.label4);
 			this.BackgroundPanel.Controls.Add(this.WallpaperFit);
 			this.BackgroundPanel.Controls.Add(this.WallpaperButton);
@@ -203,6 +205,44 @@
 			this.BackgroundPanel.Name = "BackgroundPanel";
 			this.BackgroundPanel.Size = new System.Drawing.Size(443, 559);
 			this.BackgroundPanel.TabIndex = 0;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label4.ForeColor = System.Drawing.Color.White;
+			this.label4.Location = new System.Drawing.Point(229, 258);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(83, 17);
+			this.label4.TabIndex = 7;
+			this.label4.Text = "Choose a fit";
+			// 
+			// WallpaperFit
+			// 
+			this.WallpaperFit.FormattingEnabled = true;
+			this.WallpaperFit.Items.AddRange(new object[] {
+            "Center",
+            "Tile",
+            "Stretch",
+            "Fit",
+            "Fill",
+            "Span"});
+			this.WallpaperFit.Location = new System.Drawing.Point(232, 278);
+			this.WallpaperFit.Name = "WallpaperFit";
+			this.WallpaperFit.Size = new System.Drawing.Size(145, 21);
+			this.WallpaperFit.TabIndex = 6;
+			this.WallpaperFit.SelectedIndexChanged += new System.EventHandler(this.WallpaperFit_SelectedIndexChanged);
+			// 
+			// WallpaperButton
+			// 
+			this.WallpaperButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.WallpaperButton.Location = new System.Drawing.Point(57, 273);
+			this.WallpaperButton.Name = "WallpaperButton";
+			this.WallpaperButton.Size = new System.Drawing.Size(114, 29);
+			this.WallpaperButton.TabIndex = 5;
+			this.WallpaperButton.Text = "Select Image";
+			this.WallpaperButton.UseVisualStyleBackColor = true;
+			this.WallpaperButton.Click += new System.EventHandler(this.WallpaperButton_Click);
 			// 
 			// WallpaperImage
 			// 
@@ -324,43 +364,16 @@
 			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
 			this.ColorsPanel.TabIndex = 1;
 			// 
-			// WallpaperButton
+			// BackgroundColorButton
 			// 
-			this.WallpaperButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.WallpaperButton.Location = new System.Drawing.Point(57, 276);
-			this.WallpaperButton.Name = "WallpaperButton";
-			this.WallpaperButton.Size = new System.Drawing.Size(80, 23);
-			this.WallpaperButton.TabIndex = 5;
-			this.WallpaperButton.Text = "Browse";
-			this.WallpaperButton.UseVisualStyleBackColor = true;
-			this.WallpaperButton.Click += new System.EventHandler(this.WallpaperButton_Click);
-			// 
-			// WallpaperFit
-			// 
-			this.WallpaperFit.FormattingEnabled = true;
-			this.WallpaperFit.Items.AddRange(new object[] {
-            "Center",
-            "Tile",
-            "Stretch",
-            "Fit",
-            "Fill",
-            "Span"});
-			this.WallpaperFit.Location = new System.Drawing.Point(232, 278);
-			this.WallpaperFit.Name = "WallpaperFit";
-			this.WallpaperFit.Size = new System.Drawing.Size(145, 21);
-			this.WallpaperFit.TabIndex = 6;
-			this.WallpaperFit.SelectedIndexChanged += new System.EventHandler(this.WallpaperFit_SelectedIndexChanged);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.Location = new System.Drawing.Point(229, 258);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(83, 17);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "Choose a fit";
+			this.BackgroundColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BackgroundColorButton.Location = new System.Drawing.Point(57, 308);
+			this.BackgroundColorButton.Name = "BackgroundColorButton";
+			this.BackgroundColorButton.Size = new System.Drawing.Size(114, 29);
+			this.BackgroundColorButton.TabIndex = 8;
+			this.BackgroundColorButton.Text = "Select Color";
+			this.BackgroundColorButton.UseVisualStyleBackColor = true;
+			this.BackgroundColorButton.Click += new System.EventHandler(this.BackgroundColorButton_Click);
 			// 
 			// MainForm
 			// 
@@ -414,6 +427,7 @@
 		private System.Windows.Forms.Button WallpaperButton;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox WallpaperFit;
+		private System.Windows.Forms.Button BackgroundColorButton;
 	}
 }
 
