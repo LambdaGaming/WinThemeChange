@@ -68,6 +68,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wallpaper_foreground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
