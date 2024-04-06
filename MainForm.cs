@@ -257,7 +257,7 @@ namespace WinThemeChange
 
 		private void SoundButton_Click( object sender, EventArgs e )
 		{
-			Process.Start( "control.exe", "mmsys.cpl sounds" );
+			Process.Start( "control.exe", "mmsys.cpl,,2 sounds" );
 		}
 
 		private void BrowseThemesButton_Click( object sender, EventArgs e )
