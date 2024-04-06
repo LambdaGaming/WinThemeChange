@@ -276,6 +276,21 @@ namespace WinThemeChange
 			}
 		}
 
+		private void BrowseFontsButton_Click( object sender, EventArgs e )
+		{
+			Process.Start( "control.exe", "fonts" );
+		}
+
+		private void InstallFontButton_Click( object sender, EventArgs e )
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.Filter = "Font files (*.ttf)|*.ttf";
+			if ( dialog.ShowDialog() == DialogResult.OK )
+			{
+				Process.Start( dialog.FileName );
+			}
+		}
+
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
 		{
 			// Use both in case the old one still works

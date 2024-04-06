@@ -77,6 +77,9 @@
 			this.FontsPanel = new System.Windows.Forms.Panel();
 			this.TaskbarPanel = new System.Windows.Forms.Panel();
 			this.StartPanel = new System.Windows.Forms.Panel();
+			this.label10 = new System.Windows.Forms.Label();
+			this.BrowseFontsButton = new System.Windows.Forms.Button();
+			this.InstallFontButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +93,7 @@
 			this.ExperimentalPanel.SuspendLayout();
 			this.BackgroundPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
+			this.FontsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// colorDialog
@@ -117,13 +121,13 @@
 			// 
 			// splitContainer1.Panel2
 			// 
-			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
+			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
+			this.splitContainer1.Panel2.Controls.Add(this.FontsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
+			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ExperimentalPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.FontsPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.StartPanel);
 			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
 			this.splitContainer1.SplitterDistance = 303;
@@ -351,12 +355,11 @@
 			// 
 			// SignInImage
 			// 
-			this.SignInImage.AutoSize = true;
 			this.SignInImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SignInImage.ForeColor = System.Drawing.Color.White;
-			this.SignInImage.Location = new System.Drawing.Point(57, 335);
+			this.SignInImage.Location = new System.Drawing.Point(57, 354);
 			this.SignInImage.Name = "SignInImage";
-			this.SignInImage.Size = new System.Drawing.Size(376, 21);
+			this.SignInImage.Size = new System.Drawing.Size(331, 41);
 			this.SignInImage.TabIndex = 9;
 			this.SignInImage.Text = "Show lock screen background picture on sign-in screen";
 			this.SignInImage.UseVisualStyleBackColor = true;
@@ -364,12 +367,11 @@
 			// 
 			// LockScreenFacts
 			// 
-			this.LockScreenFacts.AutoSize = true;
 			this.LockScreenFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.LockScreenFacts.ForeColor = System.Drawing.Color.White;
 			this.LockScreenFacts.Location = new System.Drawing.Point(57, 308);
 			this.LockScreenFacts.Name = "LockScreenFacts";
-			this.LockScreenFacts.Size = new System.Drawing.Size(375, 21);
+			this.LockScreenFacts.Size = new System.Drawing.Size(320, 40);
 			this.LockScreenFacts.TabIndex = 8;
 			this.LockScreenFacts.Text = "Get fun facts, tips, tricks, and more on your lock screen";
 			this.LockScreenFacts.UseVisualStyleBackColor = true;
@@ -656,7 +658,11 @@
 			// 
 			// FontsPanel
 			// 
+			this.FontsPanel.BackColor = System.Drawing.Color.Black;
 			this.FontsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.FontsPanel.Controls.Add(this.InstallFontButton);
+			this.FontsPanel.Controls.Add(this.BrowseFontsButton);
+			this.FontsPanel.Controls.Add(this.label10);
 			this.FontsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.FontsPanel.Location = new System.Drawing.Point(0, 0);
 			this.FontsPanel.Name = "FontsPanel";
@@ -665,6 +671,7 @@
 			// 
 			// TaskbarPanel
 			// 
+			this.TaskbarPanel.BackColor = System.Drawing.Color.Black;
 			this.TaskbarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TaskbarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.TaskbarPanel.Location = new System.Drawing.Point(0, 0);
@@ -680,6 +687,39 @@
 			this.StartPanel.Name = "StartPanel";
 			this.StartPanel.Size = new System.Drawing.Size(443, 559);
 			this.StartPanel.TabIndex = 1;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.ForeColor = System.Drawing.Color.White;
+			this.label10.Location = new System.Drawing.Point(168, 7);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(104, 39);
+			this.label10.TabIndex = 5;
+			this.label10.Text = "Fonts";
+			// 
+			// BrowseFontsButton
+			// 
+			this.BrowseFontsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BrowseFontsButton.Location = new System.Drawing.Point(57, 59);
+			this.BrowseFontsButton.Name = "BrowseFontsButton";
+			this.BrowseFontsButton.Size = new System.Drawing.Size(150, 25);
+			this.BrowseFontsButton.TabIndex = 9;
+			this.BrowseFontsButton.Text = "Browse Fonts";
+			this.BrowseFontsButton.UseVisualStyleBackColor = true;
+			this.BrowseFontsButton.Click += new System.EventHandler(this.BrowseFontsButton_Click);
+			// 
+			// InstallFontButton
+			// 
+			this.InstallFontButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.InstallFontButton.Location = new System.Drawing.Point(238, 59);
+			this.InstallFontButton.Name = "InstallFontButton";
+			this.InstallFontButton.Size = new System.Drawing.Size(150, 25);
+			this.InstallFontButton.TabIndex = 10;
+			this.InstallFontButton.Text = "Install Font";
+			this.InstallFontButton.UseVisualStyleBackColor = true;
+			this.InstallFontButton.Click += new System.EventHandler(this.InstallFontButton_Click);
 			// 
 			// MainForm
 			// 
@@ -711,6 +751,8 @@
 			this.BackgroundPanel.ResumeLayout(false);
 			this.BackgroundPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
+			this.FontsPanel.ResumeLayout(false);
+			this.FontsPanel.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -765,6 +807,9 @@
 		private System.Windows.Forms.Button BrowseThemesButton;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Button ActivateThemeButton;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Button BrowseFontsButton;
+		private System.Windows.Forms.Button InstallFontButton;
 	}
 }
 
