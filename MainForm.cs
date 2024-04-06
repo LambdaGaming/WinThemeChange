@@ -13,6 +13,8 @@ namespace WinThemeChange
 		const string personalization = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize";
 		const string dwm = currentUser + @"SOFTWARE\Microsoft\Windows\DWM";
 		const string accent = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Accent";
+		const string content = currentUser + @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager";
+		const string systemPersonalize = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PersonalizationCSP";
 		const int SPI_SETDESKWALLPAPER = 20;
 		const int SPIF_UPDATEINIFILE = 1;
 		const int SPIF_SENDCHANGE = 2;
@@ -27,6 +29,7 @@ namespace WinThemeChange
 			AppDarkMode.Checked = ( int ) Registry.GetValue( personalization, "AppsUseLightTheme", 0 ) == 0;
 			TransparencyEffects.Checked = ( int ) Registry.GetValue( personalization, "EnableTransparency", 0 ) == 1;
 			AccentBackground.Checked = ( int ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 ) == 1;
+			LockScreenFacts.Checked = ( int ) Registry.GetValue( content, "RotatingLockScreenOverlayEnabled", 0 ) == 1;
 		}
 
 		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
@@ -46,11 +49,21 @@ namespace WinThemeChange
 				ColorImage.BackgroundImage = img;
 				ColorImage.BackgroundImageLayout = ImageLayout.Zoom;
 			}
+
 			string reg = ( string ) Registry.GetValue( currentUser + @"Control Panel\Colors", "Background", "0 0 0" );
 			string[] colors = reg.Split( ' ' );
 			Color background = Color.FromArgb( int.Parse( colors[0] ), int.Parse( colors[1] ), int.Parse( colors[2] ) );
 			WallpaperImage.BackColor = background;
 			ColorImage.BackColor = background;
+
+			string lk = ( string ) Registry.GetValue( systemPersonalize, "LockScreenImagePath", "" );
+			MessageBox.Show( lk );
+			if ( File.Exists( lk ) )
+			{
+				Image img = Image.FromFile( lk );
+				LockImage.BackgroundImage = img;
+				LockImage.BackgroundImageLayout = ImageLayout.Zoom;
+			}
 		}
 
 		private static string GetWallpaper()
@@ -198,6 +211,20 @@ namespace WinThemeChange
 			Registry.SetValue( accent, "AccentPalette", CreatePalette( adjusted ), RegistryValueKind.Binary );
 		}
 
+		private void LockImageButton_Click( object sender, EventArgs e )
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.Filter = "Supported formats (*.jpg *.jpeg *.bmp *.dib *.png *.jfif *.jpe *.gif *.tif *.tiff *.wdp *.heic *.heif *.heics *.heifs *.avci *.avcs *.avif *.avifs)|*.jpg;*.jpeg;*.bmp;*.dib;*.png;*.jfif;*.jpe;*.gif;*.tif;*.tiff;*.wdp;*.heic;*.heif;*.heics;*.heifs;*.avci;*.avcs;*.avif;*.avifs";
+			dialog.InitialDirectory = "C:\\Windows\\Web\\Screen";
+			if ( dialog.ShowDialog() == DialogResult.OK )
+			{
+				Registry.SetValue( systemPersonalize, "LockScreenImageStatus", 1 );
+				Registry.SetValue( systemPersonalize, "LockScreenImagePath", dialog.FileName );
+				Registry.SetValue( systemPersonalize, "LockScreenImageUrl", dialog.FileName );
+				UpdateImages();
+			}
+		}
+
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
 		{
 			// Use both in case the old one still works
@@ -205,5 +232,10 @@ namespace WinThemeChange
 			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
 		}
 		#endregion
+
+		private void LockScreenFacts_CheckedChanged( object sender, EventArgs e )
+		{
+
+		}
 	}
 }

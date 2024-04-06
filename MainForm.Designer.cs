@@ -39,6 +39,7 @@
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
 			this.ColorsPanel = new System.Windows.Forms.Panel();
+			this.ColorButton = new System.Windows.Forms.Button();
 			this.AccentBackground = new System.Windows.Forms.CheckBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.TransparencyEffects = new System.Windows.Forms.CheckBox();
@@ -62,7 +63,10 @@
 			this.StartPanel = new System.Windows.Forms.Panel();
 			this.ThemesPanel = new System.Windows.Forms.Panel();
 			this.LockScreenPanel = new System.Windows.Forms.Panel();
-			this.ColorButton = new System.Windows.Forms.Button();
+			this.label7 = new System.Windows.Forms.Label();
+			this.LockImage = new System.Windows.Forms.PictureBox();
+			this.LockImageButton = new System.Windows.Forms.Button();
+			this.LockScreenFacts = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -72,6 +76,8 @@
 			this.ExperimentalPanel.SuspendLayout();
 			this.BackgroundPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
+			this.LockScreenPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.LockImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// colorDialog
@@ -99,6 +105,7 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ExperimentalPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
@@ -106,7 +113,6 @@
 			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.StartPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
 			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
 			this.splitContainer1.SplitterDistance = 303;
 			this.splitContainer1.TabIndex = 13;
@@ -217,6 +223,17 @@
 			this.ColorsPanel.Name = "ColorsPanel";
 			this.ColorsPanel.Size = new System.Drawing.Size(443, 559);
 			this.ColorsPanel.TabIndex = 1;
+			// 
+			// ColorButton
+			// 
+			this.ColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ColorButton.Location = new System.Drawing.Point(57, 437);
+			this.ColorButton.Name = "ColorButton";
+			this.ColorButton.Size = new System.Drawing.Size(103, 27);
+			this.ColorButton.TabIndex = 11;
+			this.ColorButton.Text = "Select Color";
+			this.ColorButton.UseVisualStyleBackColor = true;
+			this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
 			// 
 			// AccentBackground
 			// 
@@ -473,23 +490,62 @@
 			// 
 			// LockScreenPanel
 			// 
+			this.LockScreenPanel.BackColor = System.Drawing.Color.Black;
 			this.LockScreenPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LockScreenPanel.Controls.Add(this.LockScreenFacts);
+			this.LockScreenPanel.Controls.Add(this.LockImageButton);
+			this.LockScreenPanel.Controls.Add(this.LockImage);
+			this.LockScreenPanel.Controls.Add(this.label7);
 			this.LockScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.LockScreenPanel.Location = new System.Drawing.Point(0, 0);
 			this.LockScreenPanel.Name = "LockScreenPanel";
 			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
 			this.LockScreenPanel.TabIndex = 1;
 			// 
-			// ColorButton
+			// label7
 			// 
-			this.ColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ColorButton.Location = new System.Drawing.Point(57, 437);
-			this.ColorButton.Name = "ColorButton";
-			this.ColorButton.Size = new System.Drawing.Size(103, 27);
-			this.ColorButton.TabIndex = 11;
-			this.ColorButton.Text = "Select color";
-			this.ColorButton.UseVisualStyleBackColor = true;
-			this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.ForeColor = System.Drawing.Color.White;
+			this.label7.Location = new System.Drawing.Point(115, 5);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(210, 39);
+			this.label7.TabIndex = 3;
+			this.label7.Text = "Lock Screen";
+			// 
+			// LockImage
+			// 
+			this.LockImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+			this.LockImage.InitialImage = null;
+			this.LockImage.Location = new System.Drawing.Point(57, 62);
+			this.LockImage.Name = "LockImage";
+			this.LockImage.Size = new System.Drawing.Size(320, 180);
+			this.LockImage.TabIndex = 6;
+			this.LockImage.TabStop = false;
+			// 
+			// LockImageButton
+			// 
+			this.LockImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockImageButton.Location = new System.Drawing.Point(57, 268);
+			this.LockImageButton.Name = "LockImageButton";
+			this.LockImageButton.Size = new System.Drawing.Size(114, 29);
+			this.LockImageButton.TabIndex = 7;
+			this.LockImageButton.Text = "Select Image";
+			this.LockImageButton.UseVisualStyleBackColor = true;
+			this.LockImageButton.Click += new System.EventHandler(this.LockImageButton_Click);
+			// 
+			// LockScreenFacts
+			// 
+			this.LockScreenFacts.AutoSize = true;
+			this.LockScreenFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockScreenFacts.ForeColor = System.Drawing.Color.White;
+			this.LockScreenFacts.Location = new System.Drawing.Point(57, 308);
+			this.LockScreenFacts.Name = "LockScreenFacts";
+			this.LockScreenFacts.Size = new System.Drawing.Size(375, 21);
+			this.LockScreenFacts.TabIndex = 8;
+			this.LockScreenFacts.Text = "Get fun facts, tips, tricks, and more on your lock screen";
+			this.LockScreenFacts.UseVisualStyleBackColor = true;
+			this.LockScreenFacts.CheckedChanged += new System.EventHandler(this.LockScreenFacts_CheckedChanged);
 			// 
 			// MainForm
 			// 
@@ -515,6 +571,9 @@
 			this.BackgroundPanel.ResumeLayout(false);
 			this.BackgroundPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
+			this.LockScreenPanel.ResumeLayout(false);
+			this.LockScreenPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.LockImage)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -555,6 +614,10 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.CheckBox AccentBackground;
 		private System.Windows.Forms.Button ColorButton;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.PictureBox LockImage;
+		private System.Windows.Forms.Button LockImageButton;
+		private System.Windows.Forms.CheckBox LockScreenFacts;
 	}
 }
 
