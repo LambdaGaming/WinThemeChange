@@ -30,6 +30,7 @@ namespace WinThemeChange
 			TransparencyEffects.Checked = ( int ) Registry.GetValue( personalization, "EnableTransparency", 0 ) == 1;
 			AccentBackground.Checked = ( int ) Registry.GetValue( currentUser + @"Control Panel\Desktop", "AutoColorization", 0 ) == 1;
 			LockScreenFacts.Checked = ( int ) Registry.GetValue( content, "RotatingLockScreenOverlayEnabled", 0 ) == 1;
+			SignInImage.Checked = ( int ) Registry.GetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System", "DisableLogonBackgroundImage", 0 ) == 0;
 		}
 
 		[DllImport( "user32.dll", CharSet = CharSet.Auto, SetLastError = true )]
@@ -127,7 +128,7 @@ namespace WinThemeChange
 		{
 			OpenFileDialog dialog = new OpenFileDialog();
 			dialog.Filter = "Supported formats (*.jpg *.jpeg *.bmp *.dib *.png *.jfif *.jpe *.gif *.tif *.tiff *.wdp *.heic *.heif *.heics *.heifs *.avci *.avcs *.avif *.avifs)|*.jpg;*.jpeg;*.bmp;*.dib;*.png;*.jfif;*.jpe;*.gif;*.tif;*.tiff;*.wdp;*.heic;*.heif;*.heics;*.heifs;*.avci;*.avcs;*.avif;*.avifs";
-			dialog.InitialDirectory = "C:\\Windows\\Web\\Wallpaper";
+			dialog.InitialDirectory = @"C:\Windows\Web\Wallpaper";
 			if ( dialog.ShowDialog() == DialogResult.OK )
 			{
 				SystemParametersInfo( SPI_SETDESKWALLPAPER, 0, dialog.FileName, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
@@ -215,7 +216,7 @@ namespace WinThemeChange
 		{
 			OpenFileDialog dialog = new OpenFileDialog();
 			dialog.Filter = "Supported formats (*.jpg *.jpeg *.bmp *.dib *.png *.jfif *.jpe *.gif *.tif *.tiff *.wdp *.heic *.heif *.heics *.heifs *.avci *.avcs *.avif *.avifs)|*.jpg;*.jpeg;*.bmp;*.dib;*.png;*.jfif;*.jpe;*.gif;*.tif;*.tiff;*.wdp;*.heic;*.heif;*.heics;*.heifs;*.avci;*.avcs;*.avif;*.avifs";
-			dialog.InitialDirectory = "C:\\Windows\\Web\\Screen";
+			dialog.InitialDirectory = @"C:\Windows\Web\Screen";
 			if ( dialog.ShowDialog() == DialogResult.OK )
 			{
 				Registry.SetValue( systemPersonalize, "LockScreenImageStatus", 1 );
@@ -225,6 +226,17 @@ namespace WinThemeChange
 			}
 		}
 
+		private void LockScreenFacts_CheckedChanged( object sender, EventArgs e )
+		{
+			Registry.SetValue( content, "RotatingLockScreenOverlayEnabled", LockScreenFacts.Checked ? 1 : 0 );
+			Registry.SetValue( content, "SubscribedContent-338387Enabled", LockScreenFacts.Checked ? 1 : 0 );
+		}
+
+		private void SignInImage_CheckedChanged( object sender, EventArgs e )
+		{
+			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System", "DisableLogonBackgroundImage", SignInImage.Checked ? 0 : 1 );
+		}
+
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
 		{
 			// Use both in case the old one still works
@@ -232,10 +244,5 @@ namespace WinThemeChange
 			Registry.SetValue( currentUser + @"Control Panel\Desktop", "PaintDesktopVersion", 0 );
 		}
 		#endregion
-
-		private void LockScreenFacts_CheckedChanged( object sender, EventArgs e )
-		{
-
-		}
 	}
 }

@@ -38,6 +38,11 @@
 			this.LockScreenButton = new System.Windows.Forms.Button();
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
+			this.LockScreenPanel = new System.Windows.Forms.Panel();
+			this.LockScreenFacts = new System.Windows.Forms.CheckBox();
+			this.LockImageButton = new System.Windows.Forms.Button();
+			this.LockImage = new System.Windows.Forms.PictureBox();
+			this.label7 = new System.Windows.Forms.Label();
 			this.ColorsPanel = new System.Windows.Forms.Panel();
 			this.ColorButton = new System.Windows.Forms.Button();
 			this.AccentBackground = new System.Windows.Forms.CheckBox();
@@ -62,22 +67,18 @@
 			this.TaskbarPanel = new System.Windows.Forms.Panel();
 			this.StartPanel = new System.Windows.Forms.Panel();
 			this.ThemesPanel = new System.Windows.Forms.Panel();
-			this.LockScreenPanel = new System.Windows.Forms.Panel();
-			this.label7 = new System.Windows.Forms.Label();
-			this.LockImage = new System.Windows.Forms.PictureBox();
-			this.LockImageButton = new System.Windows.Forms.Button();
-			this.LockScreenFacts = new System.Windows.Forms.CheckBox();
+			this.SignInImage = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.LockScreenPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.LockImage)).BeginInit();
 			this.ColorsPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).BeginInit();
 			this.ExperimentalPanel.SuspendLayout();
 			this.BackgroundPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
-			this.LockScreenPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.LockImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// colorDialog
@@ -204,6 +205,66 @@
 			this.BackgroundButton.Text = "Background";
 			this.BackgroundButton.UseVisualStyleBackColor = true;
 			this.BackgroundButton.Click += new System.EventHandler(this.BackgroundButton_Click);
+			// 
+			// LockScreenPanel
+			// 
+			this.LockScreenPanel.BackColor = System.Drawing.Color.Black;
+			this.LockScreenPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LockScreenPanel.Controls.Add(this.SignInImage);
+			this.LockScreenPanel.Controls.Add(this.LockScreenFacts);
+			this.LockScreenPanel.Controls.Add(this.LockImageButton);
+			this.LockScreenPanel.Controls.Add(this.LockImage);
+			this.LockScreenPanel.Controls.Add(this.label7);
+			this.LockScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.LockScreenPanel.Location = new System.Drawing.Point(0, 0);
+			this.LockScreenPanel.Name = "LockScreenPanel";
+			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
+			this.LockScreenPanel.TabIndex = 1;
+			// 
+			// LockScreenFacts
+			// 
+			this.LockScreenFacts.AutoSize = true;
+			this.LockScreenFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockScreenFacts.ForeColor = System.Drawing.Color.White;
+			this.LockScreenFacts.Location = new System.Drawing.Point(57, 308);
+			this.LockScreenFacts.Name = "LockScreenFacts";
+			this.LockScreenFacts.Size = new System.Drawing.Size(375, 21);
+			this.LockScreenFacts.TabIndex = 8;
+			this.LockScreenFacts.Text = "Get fun facts, tips, tricks, and more on your lock screen";
+			this.LockScreenFacts.UseVisualStyleBackColor = true;
+			this.LockScreenFacts.CheckedChanged += new System.EventHandler(this.LockScreenFacts_CheckedChanged);
+			// 
+			// LockImageButton
+			// 
+			this.LockImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockImageButton.Location = new System.Drawing.Point(57, 268);
+			this.LockImageButton.Name = "LockImageButton";
+			this.LockImageButton.Size = new System.Drawing.Size(114, 29);
+			this.LockImageButton.TabIndex = 7;
+			this.LockImageButton.Text = "Select Image";
+			this.LockImageButton.UseVisualStyleBackColor = true;
+			this.LockImageButton.Click += new System.EventHandler(this.LockImageButton_Click);
+			// 
+			// LockImage
+			// 
+			this.LockImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+			this.LockImage.InitialImage = null;
+			this.LockImage.Location = new System.Drawing.Point(57, 62);
+			this.LockImage.Name = "LockImage";
+			this.LockImage.Size = new System.Drawing.Size(320, 180);
+			this.LockImage.TabIndex = 6;
+			this.LockImage.TabStop = false;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.ForeColor = System.Drawing.Color.White;
+			this.label7.Location = new System.Drawing.Point(115, 5);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(210, 39);
+			this.label7.TabIndex = 3;
+			this.label7.Text = "Lock Screen";
 			// 
 			// ColorsPanel
 			// 
@@ -488,64 +549,18 @@
 			this.ThemesPanel.Size = new System.Drawing.Size(443, 559);
 			this.ThemesPanel.TabIndex = 1;
 			// 
-			// LockScreenPanel
+			// SignInImage
 			// 
-			this.LockScreenPanel.BackColor = System.Drawing.Color.Black;
-			this.LockScreenPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.LockScreenPanel.Controls.Add(this.LockScreenFacts);
-			this.LockScreenPanel.Controls.Add(this.LockImageButton);
-			this.LockScreenPanel.Controls.Add(this.LockImage);
-			this.LockScreenPanel.Controls.Add(this.label7);
-			this.LockScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.LockScreenPanel.Location = new System.Drawing.Point(0, 0);
-			this.LockScreenPanel.Name = "LockScreenPanel";
-			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
-			this.LockScreenPanel.TabIndex = 1;
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.ForeColor = System.Drawing.Color.White;
-			this.label7.Location = new System.Drawing.Point(115, 5);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(210, 39);
-			this.label7.TabIndex = 3;
-			this.label7.Text = "Lock Screen";
-			// 
-			// LockImage
-			// 
-			this.LockImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-			this.LockImage.InitialImage = null;
-			this.LockImage.Location = new System.Drawing.Point(57, 62);
-			this.LockImage.Name = "LockImage";
-			this.LockImage.Size = new System.Drawing.Size(320, 180);
-			this.LockImage.TabIndex = 6;
-			this.LockImage.TabStop = false;
-			// 
-			// LockImageButton
-			// 
-			this.LockImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LockImageButton.Location = new System.Drawing.Point(57, 268);
-			this.LockImageButton.Name = "LockImageButton";
-			this.LockImageButton.Size = new System.Drawing.Size(114, 29);
-			this.LockImageButton.TabIndex = 7;
-			this.LockImageButton.Text = "Select Image";
-			this.LockImageButton.UseVisualStyleBackColor = true;
-			this.LockImageButton.Click += new System.EventHandler(this.LockImageButton_Click);
-			// 
-			// LockScreenFacts
-			// 
-			this.LockScreenFacts.AutoSize = true;
-			this.LockScreenFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LockScreenFacts.ForeColor = System.Drawing.Color.White;
-			this.LockScreenFacts.Location = new System.Drawing.Point(57, 308);
-			this.LockScreenFacts.Name = "LockScreenFacts";
-			this.LockScreenFacts.Size = new System.Drawing.Size(375, 21);
-			this.LockScreenFacts.TabIndex = 8;
-			this.LockScreenFacts.Text = "Get fun facts, tips, tricks, and more on your lock screen";
-			this.LockScreenFacts.UseVisualStyleBackColor = true;
-			this.LockScreenFacts.CheckedChanged += new System.EventHandler(this.LockScreenFacts_CheckedChanged);
+			this.SignInImage.AutoSize = true;
+			this.SignInImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SignInImage.ForeColor = System.Drawing.Color.White;
+			this.SignInImage.Location = new System.Drawing.Point(57, 335);
+			this.SignInImage.Name = "SignInImage";
+			this.SignInImage.Size = new System.Drawing.Size(376, 21);
+			this.SignInImage.TabIndex = 9;
+			this.SignInImage.Text = "Show lock screen background picture on sign-in screen";
+			this.SignInImage.UseVisualStyleBackColor = true;
+			this.SignInImage.CheckedChanged += new System.EventHandler(this.SignInImage_CheckedChanged);
 			// 
 			// MainForm
 			// 
@@ -563,6 +578,9 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.LockScreenPanel.ResumeLayout(false);
+			this.LockScreenPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.LockImage)).EndInit();
 			this.ColorsPanel.ResumeLayout(false);
 			this.ColorsPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).EndInit();
@@ -571,9 +589,6 @@
 			this.BackgroundPanel.ResumeLayout(false);
 			this.BackgroundPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
-			this.LockScreenPanel.ResumeLayout(false);
-			this.LockScreenPanel.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.LockImage)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -618,6 +633,7 @@
 		private System.Windows.Forms.PictureBox LockImage;
 		private System.Windows.Forms.Button LockImageButton;
 		private System.Windows.Forms.CheckBox LockScreenFacts;
+		private System.Windows.Forms.CheckBox SignInImage;
 	}
 }
 
