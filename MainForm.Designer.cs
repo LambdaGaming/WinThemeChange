@@ -38,7 +38,18 @@
 			this.LockScreenButton = new System.Windows.Forms.Button();
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
+			this.ThemesPanel = new System.Windows.Forms.Panel();
+			this.ActivateThemeButton = new System.Windows.Forms.Button();
+			this.BrowseThemesButton = new System.Windows.Forms.Button();
+			this.label9 = new System.Windows.Forms.Label();
+			this.CursorButton = new System.Windows.Forms.Button();
+			this.SoundButton = new System.Windows.Forms.Button();
+			this.GotoColorsButton = new System.Windows.Forms.Button();
+			this.GotoBackgroundButton = new System.Windows.Forms.Button();
+			this.ThemeImage = new System.Windows.Forms.PictureBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.LockScreenPanel = new System.Windows.Forms.Panel();
+			this.SignInImage = new System.Windows.Forms.CheckBox();
 			this.LockScreenFacts = new System.Windows.Forms.CheckBox();
 			this.LockImageButton = new System.Windows.Forms.Button();
 			this.LockImage = new System.Windows.Forms.PictureBox();
@@ -66,12 +77,12 @@
 			this.FontsPanel = new System.Windows.Forms.Panel();
 			this.TaskbarPanel = new System.Windows.Forms.Panel();
 			this.StartPanel = new System.Windows.Forms.Panel();
-			this.ThemesPanel = new System.Windows.Forms.Panel();
-			this.SignInImage = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.ThemesPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThemeImage)).BeginInit();
 			this.LockScreenPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LockImage)).BeginInit();
 			this.ColorsPanel.SuspendLayout();
@@ -106,6 +117,7 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ExperimentalPanel);
@@ -113,7 +125,6 @@
 			this.splitContainer1.Panel2.Controls.Add(this.FontsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.StartPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
 			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
 			this.splitContainer1.SplitterDistance = 303;
 			this.splitContainer1.TabIndex = 13;
@@ -206,6 +217,123 @@
 			this.BackgroundButton.UseVisualStyleBackColor = true;
 			this.BackgroundButton.Click += new System.EventHandler(this.BackgroundButton_Click);
 			// 
+			// ThemesPanel
+			// 
+			this.ThemesPanel.BackColor = System.Drawing.Color.Black;
+			this.ThemesPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.ThemesPanel.Controls.Add(this.ActivateThemeButton);
+			this.ThemesPanel.Controls.Add(this.BrowseThemesButton);
+			this.ThemesPanel.Controls.Add(this.label9);
+			this.ThemesPanel.Controls.Add(this.CursorButton);
+			this.ThemesPanel.Controls.Add(this.SoundButton);
+			this.ThemesPanel.Controls.Add(this.GotoColorsButton);
+			this.ThemesPanel.Controls.Add(this.GotoBackgroundButton);
+			this.ThemesPanel.Controls.Add(this.ThemeImage);
+			this.ThemesPanel.Controls.Add(this.label8);
+			this.ThemesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ThemesPanel.Location = new System.Drawing.Point(0, 0);
+			this.ThemesPanel.Name = "ThemesPanel";
+			this.ThemesPanel.Size = new System.Drawing.Size(443, 559);
+			this.ThemesPanel.TabIndex = 1;
+			// 
+			// ActivateThemeButton
+			// 
+			this.ActivateThemeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ActivateThemeButton.Location = new System.Drawing.Point(122, 379);
+			this.ActivateThemeButton.Name = "ActivateThemeButton";
+			this.ActivateThemeButton.Size = new System.Drawing.Size(187, 25);
+			this.ActivateThemeButton.TabIndex = 14;
+			this.ActivateThemeButton.Text = "Select Theme";
+			this.ActivateThemeButton.UseVisualStyleBackColor = true;
+			this.ActivateThemeButton.Click += new System.EventHandler(this.ActivateThemeButton_Click);
+			// 
+			// BrowseThemesButton
+			// 
+			this.BrowseThemesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BrowseThemesButton.Location = new System.Drawing.Point(122, 347);
+			this.BrowseThemesButton.Name = "BrowseThemesButton";
+			this.BrowseThemesButton.Size = new System.Drawing.Size(187, 25);
+			this.BrowseThemesButton.TabIndex = 13;
+			this.BrowseThemesButton.Text = "Browse Default Themes";
+			this.BrowseThemesButton.UseVisualStyleBackColor = true;
+			this.BrowseThemesButton.Click += new System.EventHandler(this.BrowseThemesButton_Click);
+			// 
+			// label9
+			// 
+			this.label9.ForeColor = System.Drawing.Color.White;
+			this.label9.Location = new System.Drawing.Point(57, 419);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(320, 45);
+			this.label9.TabIndex = 12;
+			this.label9.Text = "Note: You can also double click a .theme or .themepack file to instantly apply th" +
+    "at theme. Changing themes may not work if your Windows is unactivated and the wa" +
+    "termark is visible.";
+			// 
+			// CursorButton
+			// 
+			this.CursorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.CursorButton.Location = new System.Drawing.Point(227, 289);
+			this.CursorButton.Name = "CursorButton";
+			this.CursorButton.Size = new System.Drawing.Size(150, 25);
+			this.CursorButton.TabIndex = 11;
+			this.CursorButton.Text = "Cursor Settings";
+			this.CursorButton.UseVisualStyleBackColor = true;
+			this.CursorButton.Click += new System.EventHandler(this.CursorButton_Click);
+			// 
+			// SoundButton
+			// 
+			this.SoundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SoundButton.Location = new System.Drawing.Point(227, 258);
+			this.SoundButton.Name = "SoundButton";
+			this.SoundButton.Size = new System.Drawing.Size(150, 25);
+			this.SoundButton.TabIndex = 10;
+			this.SoundButton.Text = "Sound Settings";
+			this.SoundButton.UseVisualStyleBackColor = true;
+			this.SoundButton.Click += new System.EventHandler(this.SoundButton_Click);
+			// 
+			// GotoColorsButton
+			// 
+			this.GotoColorsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.GotoColorsButton.Location = new System.Drawing.Point(57, 289);
+			this.GotoColorsButton.Name = "GotoColorsButton";
+			this.GotoColorsButton.Size = new System.Drawing.Size(150, 25);
+			this.GotoColorsButton.TabIndex = 9;
+			this.GotoColorsButton.Text = "Color Settings";
+			this.GotoColorsButton.UseVisualStyleBackColor = true;
+			this.GotoColorsButton.Click += new System.EventHandler(this.GotoColorsButton_Click);
+			// 
+			// GotoBackgroundButton
+			// 
+			this.GotoBackgroundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.GotoBackgroundButton.Location = new System.Drawing.Point(57, 258);
+			this.GotoBackgroundButton.Name = "GotoBackgroundButton";
+			this.GotoBackgroundButton.Size = new System.Drawing.Size(150, 25);
+			this.GotoBackgroundButton.TabIndex = 8;
+			this.GotoBackgroundButton.Text = "Background Settings";
+			this.GotoBackgroundButton.UseVisualStyleBackColor = true;
+			this.GotoBackgroundButton.Click += new System.EventHandler(this.GotoBackgroundButton_Click);
+			// 
+			// ThemeImage
+			// 
+			this.ThemeImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+			this.ThemeImage.Image = global::WinThemeChange.Properties.Resources.wallpaper_foreground;
+			this.ThemeImage.Location = new System.Drawing.Point(57, 62);
+			this.ThemeImage.Name = "ThemeImage";
+			this.ThemeImage.Size = new System.Drawing.Size(320, 180);
+			this.ThemeImage.TabIndex = 7;
+			this.ThemeImage.TabStop = false;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label8.ForeColor = System.Drawing.Color.White;
+			this.label8.Location = new System.Drawing.Point(145, 7);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(143, 39);
+			this.label8.TabIndex = 4;
+			this.label8.Text = "Themes";
+			// 
 			// LockScreenPanel
 			// 
 			this.LockScreenPanel.BackColor = System.Drawing.Color.Black;
@@ -220,6 +348,19 @@
 			this.LockScreenPanel.Name = "LockScreenPanel";
 			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
 			this.LockScreenPanel.TabIndex = 1;
+			// 
+			// SignInImage
+			// 
+			this.SignInImage.AutoSize = true;
+			this.SignInImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SignInImage.ForeColor = System.Drawing.Color.White;
+			this.SignInImage.Location = new System.Drawing.Point(57, 335);
+			this.SignInImage.Name = "SignInImage";
+			this.SignInImage.Size = new System.Drawing.Size(376, 21);
+			this.SignInImage.TabIndex = 9;
+			this.SignInImage.Text = "Show lock screen background picture on sign-in screen";
+			this.SignInImage.UseVisualStyleBackColor = true;
+			this.SignInImage.CheckedChanged += new System.EventHandler(this.SignInImage_CheckedChanged);
 			// 
 			// LockScreenFacts
 			// 
@@ -540,28 +681,6 @@
 			this.StartPanel.Size = new System.Drawing.Size(443, 559);
 			this.StartPanel.TabIndex = 1;
 			// 
-			// ThemesPanel
-			// 
-			this.ThemesPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.ThemesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.ThemesPanel.Location = new System.Drawing.Point(0, 0);
-			this.ThemesPanel.Name = "ThemesPanel";
-			this.ThemesPanel.Size = new System.Drawing.Size(443, 559);
-			this.ThemesPanel.TabIndex = 1;
-			// 
-			// SignInImage
-			// 
-			this.SignInImage.AutoSize = true;
-			this.SignInImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SignInImage.ForeColor = System.Drawing.Color.White;
-			this.SignInImage.Location = new System.Drawing.Point(57, 335);
-			this.SignInImage.Name = "SignInImage";
-			this.SignInImage.Size = new System.Drawing.Size(376, 21);
-			this.SignInImage.TabIndex = 9;
-			this.SignInImage.Text = "Show lock screen background picture on sign-in screen";
-			this.SignInImage.UseVisualStyleBackColor = true;
-			this.SignInImage.CheckedChanged += new System.EventHandler(this.SignInImage_CheckedChanged);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,6 +697,9 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.ThemesPanel.ResumeLayout(false);
+			this.ThemesPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThemeImage)).EndInit();
 			this.LockScreenPanel.ResumeLayout(false);
 			this.LockScreenPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LockImage)).EndInit();
@@ -634,6 +756,15 @@
 		private System.Windows.Forms.Button LockImageButton;
 		private System.Windows.Forms.CheckBox LockScreenFacts;
 		private System.Windows.Forms.CheckBox SignInImage;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.PictureBox ThemeImage;
+		private System.Windows.Forms.Button GotoBackgroundButton;
+		private System.Windows.Forms.Button CursorButton;
+		private System.Windows.Forms.Button SoundButton;
+		private System.Windows.Forms.Button GotoColorsButton;
+		private System.Windows.Forms.Button BrowseThemesButton;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Button ActivateThemeButton;
 	}
 }
 

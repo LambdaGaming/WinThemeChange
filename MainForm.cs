@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -49,6 +50,8 @@ namespace WinThemeChange
 				WallpaperImage.BackgroundImageLayout = ImageLayout.Zoom;
 				ColorImage.BackgroundImage = img;
 				ColorImage.BackgroundImageLayout = ImageLayout.Zoom;
+				ThemeImage.BackgroundImage = img;
+				ThemeImage.BackgroundImageLayout = ImageLayout.Zoom;
 			}
 
 			string reg = ( string ) Registry.GetValue( currentUser + @"Control Panel\Colors", "Background", "0 0 0" );
@@ -56,9 +59,9 @@ namespace WinThemeChange
 			Color background = Color.FromArgb( int.Parse( colors[0] ), int.Parse( colors[1] ), int.Parse( colors[2] ) );
 			WallpaperImage.BackColor = background;
 			ColorImage.BackColor = background;
+			ThemeImage.BackColor = background;
 
 			string lk = ( string ) Registry.GetValue( systemPersonalize, "LockScreenImagePath", "" );
-			MessageBox.Show( lk );
 			if ( File.Exists( lk ) )
 			{
 				Image img = Image.FromFile( lk );
@@ -235,6 +238,42 @@ namespace WinThemeChange
 		private void SignInImage_CheckedChanged( object sender, EventArgs e )
 		{
 			Registry.SetValue( @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System", "DisableLogonBackgroundImage", SignInImage.Checked ? 0 : 1 );
+		}
+
+		private void GotoBackgroundButton_Click( object sender, EventArgs e )
+		{
+			BackgroundPanel.BringToFront();
+		}
+
+		private void GotoColorsButton_Click( object sender, EventArgs e )
+		{
+			ColorsPanel.BringToFront();
+		}
+
+		private void CursorButton_Click( object sender, EventArgs e )
+		{
+			Process.Start( "control.exe", "main.cpl,,1" );
+		}
+
+		private void SoundButton_Click( object sender, EventArgs e )
+		{
+			Process.Start( "control.exe", "mmsys.cpl sounds" );
+		}
+
+		private void BrowseThemesButton_Click( object sender, EventArgs e )
+		{
+			Process.Start( "explorer.exe", @"C:\Windows\Resources" );
+		}
+
+		private void ActivateThemeButton_Click( object sender, EventArgs e )
+		{
+			OpenFileDialog dialog = new OpenFileDialog();
+			dialog.Filter = "Theme files (*.theme *.themepack)|*.theme;*.themepack";
+			dialog.InitialDirectory = @"C:\Windows\Resources";
+			if ( dialog.ShowDialog() == DialogResult.OK )
+			{
+				Process.Start( "explorer.exe", dialog.FileName );
+			}
 		}
 
 		private void DisableWatermarkButton_Click( object sender, EventArgs e )
