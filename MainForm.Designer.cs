@@ -31,13 +31,21 @@
 			this.colorDialog = new System.Windows.Forms.ColorDialog();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.ExperimentalButton = new System.Windows.Forms.Button();
-			this.TaskbarButton = new System.Windows.Forms.Button();
-			this.StartButton = new System.Windows.Forms.Button();
 			this.FontsButton = new System.Windows.Forms.Button();
 			this.ThemesButton = new System.Windows.Forms.Button();
 			this.LockScreenButton = new System.Windows.Forms.Button();
 			this.ColorsButton = new System.Windows.Forms.Button();
 			this.BackgroundButton = new System.Windows.Forms.Button();
+			this.FontsPanel = new System.Windows.Forms.Panel();
+			this.InstallFontButton = new System.Windows.Forms.Button();
+			this.BrowseFontsButton = new System.Windows.Forms.Button();
+			this.label10 = new System.Windows.Forms.Label();
+			this.LockScreenPanel = new System.Windows.Forms.Panel();
+			this.SignInImage = new System.Windows.Forms.CheckBox();
+			this.LockScreenFacts = new System.Windows.Forms.CheckBox();
+			this.LockImageButton = new System.Windows.Forms.Button();
+			this.LockImage = new System.Windows.Forms.PictureBox();
+			this.label7 = new System.Windows.Forms.Label();
 			this.ThemesPanel = new System.Windows.Forms.Panel();
 			this.ActivateThemeButton = new System.Windows.Forms.Button();
 			this.BrowseThemesButton = new System.Windows.Forms.Button();
@@ -48,12 +56,6 @@
 			this.GotoBackgroundButton = new System.Windows.Forms.Button();
 			this.ThemeImage = new System.Windows.Forms.PictureBox();
 			this.label8 = new System.Windows.Forms.Label();
-			this.LockScreenPanel = new System.Windows.Forms.Panel();
-			this.SignInImage = new System.Windows.Forms.CheckBox();
-			this.LockScreenFacts = new System.Windows.Forms.CheckBox();
-			this.LockImageButton = new System.Windows.Forms.Button();
-			this.LockImage = new System.Windows.Forms.PictureBox();
-			this.label7 = new System.Windows.Forms.Label();
 			this.ColorsPanel = new System.Windows.Forms.Panel();
 			this.ColorButton = new System.Windows.Forms.Button();
 			this.AccentBackground = new System.Windows.Forms.CheckBox();
@@ -74,26 +76,20 @@
 			this.WallpaperButton = new System.Windows.Forms.Button();
 			this.WallpaperImage = new System.Windows.Forms.PictureBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.FontsPanel = new System.Windows.Forms.Panel();
-			this.TaskbarPanel = new System.Windows.Forms.Panel();
-			this.StartPanel = new System.Windows.Forms.Panel();
-			this.label10 = new System.Windows.Forms.Label();
-			this.BrowseFontsButton = new System.Windows.Forms.Button();
-			this.InstallFontButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.ThemesPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ThemeImage)).BeginInit();
+			this.FontsPanel.SuspendLayout();
 			this.LockScreenPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LockImage)).BeginInit();
+			this.ThemesPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThemeImage)).BeginInit();
 			this.ColorsPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).BeginInit();
 			this.ExperimentalPanel.SuspendLayout();
 			this.BackgroundPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).BeginInit();
-			this.FontsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// colorDialog
@@ -111,8 +107,6 @@
 			// splitContainer1.Panel1
 			// 
 			this.splitContainer1.Panel1.Controls.Add(this.ExperimentalButton);
-			this.splitContainer1.Panel1.Controls.Add(this.TaskbarButton);
-			this.splitContainer1.Panel1.Controls.Add(this.StartButton);
 			this.splitContainer1.Panel1.Controls.Add(this.FontsButton);
 			this.splitContainer1.Panel1.Controls.Add(this.ThemesButton);
 			this.splitContainer1.Panel1.Controls.Add(this.LockScreenButton);
@@ -121,14 +115,12 @@
 			// 
 			// splitContainer1.Panel2
 			// 
-			this.splitContainer1.Panel2.Controls.Add(this.TaskbarPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.FontsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.LockScreenPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ThemesPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ColorsPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.ExperimentalPanel);
 			this.splitContainer1.Panel2.Controls.Add(this.BackgroundPanel);
-			this.splitContainer1.Panel2.Controls.Add(this.StartPanel);
 			this.splitContainer1.Size = new System.Drawing.Size(750, 559);
 			this.splitContainer1.SplitterDistance = 303;
 			this.splitContainer1.TabIndex = 13;
@@ -136,42 +128,22 @@
 			// ExperimentalButton
 			// 
 			this.ExperimentalButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ExperimentalButton.Location = new System.Drawing.Point(0, 161);
+			this.ExperimentalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ExperimentalButton.Location = new System.Drawing.Point(0, 175);
 			this.ExperimentalButton.Name = "ExperimentalButton";
-			this.ExperimentalButton.Size = new System.Drawing.Size(303, 23);
+			this.ExperimentalButton.Size = new System.Drawing.Size(303, 35);
 			this.ExperimentalButton.TabIndex = 7;
 			this.ExperimentalButton.Text = "Experimental";
 			this.ExperimentalButton.UseVisualStyleBackColor = true;
 			this.ExperimentalButton.Click += new System.EventHandler(this.ExperimentalButton_Click);
 			// 
-			// TaskbarButton
-			// 
-			this.TaskbarButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.TaskbarButton.Location = new System.Drawing.Point(0, 138);
-			this.TaskbarButton.Name = "TaskbarButton";
-			this.TaskbarButton.Size = new System.Drawing.Size(303, 23);
-			this.TaskbarButton.TabIndex = 6;
-			this.TaskbarButton.Text = "Taskbar";
-			this.TaskbarButton.UseVisualStyleBackColor = true;
-			this.TaskbarButton.Click += new System.EventHandler(this.TaskbarButton_Click);
-			// 
-			// StartButton
-			// 
-			this.StartButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.StartButton.Location = new System.Drawing.Point(0, 115);
-			this.StartButton.Name = "StartButton";
-			this.StartButton.Size = new System.Drawing.Size(303, 23);
-			this.StartButton.TabIndex = 5;
-			this.StartButton.Text = "Start";
-			this.StartButton.UseVisualStyleBackColor = true;
-			this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
-			// 
 			// FontsButton
 			// 
 			this.FontsButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.FontsButton.Location = new System.Drawing.Point(0, 92);
+			this.FontsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FontsButton.Location = new System.Drawing.Point(0, 140);
 			this.FontsButton.Name = "FontsButton";
-			this.FontsButton.Size = new System.Drawing.Size(303, 23);
+			this.FontsButton.Size = new System.Drawing.Size(303, 35);
 			this.FontsButton.TabIndex = 4;
 			this.FontsButton.Text = "Fonts";
 			this.FontsButton.UseVisualStyleBackColor = true;
@@ -180,9 +152,10 @@
 			// ThemesButton
 			// 
 			this.ThemesButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ThemesButton.Location = new System.Drawing.Point(0, 69);
+			this.ThemesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ThemesButton.Location = new System.Drawing.Point(0, 105);
 			this.ThemesButton.Name = "ThemesButton";
-			this.ThemesButton.Size = new System.Drawing.Size(303, 23);
+			this.ThemesButton.Size = new System.Drawing.Size(303, 35);
 			this.ThemesButton.TabIndex = 3;
 			this.ThemesButton.Text = "Themes";
 			this.ThemesButton.UseVisualStyleBackColor = true;
@@ -191,9 +164,10 @@
 			// LockScreenButton
 			// 
 			this.LockScreenButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.LockScreenButton.Location = new System.Drawing.Point(0, 46);
+			this.LockScreenButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockScreenButton.Location = new System.Drawing.Point(0, 70);
 			this.LockScreenButton.Name = "LockScreenButton";
-			this.LockScreenButton.Size = new System.Drawing.Size(303, 23);
+			this.LockScreenButton.Size = new System.Drawing.Size(303, 35);
 			this.LockScreenButton.TabIndex = 2;
 			this.LockScreenButton.Text = "Lock Screen";
 			this.LockScreenButton.UseVisualStyleBackColor = true;
@@ -202,9 +176,10 @@
 			// ColorsButton
 			// 
 			this.ColorsButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ColorsButton.Location = new System.Drawing.Point(0, 23);
+			this.ColorsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ColorsButton.Location = new System.Drawing.Point(0, 35);
 			this.ColorsButton.Name = "ColorsButton";
-			this.ColorsButton.Size = new System.Drawing.Size(303, 23);
+			this.ColorsButton.Size = new System.Drawing.Size(303, 35);
 			this.ColorsButton.TabIndex = 1;
 			this.ColorsButton.Text = "Colors";
 			this.ColorsButton.UseVisualStyleBackColor = true;
@@ -213,13 +188,131 @@
 			// BackgroundButton
 			// 
 			this.BackgroundButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.BackgroundButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.BackgroundButton.Location = new System.Drawing.Point(0, 0);
 			this.BackgroundButton.Name = "BackgroundButton";
-			this.BackgroundButton.Size = new System.Drawing.Size(303, 23);
+			this.BackgroundButton.Size = new System.Drawing.Size(303, 35);
 			this.BackgroundButton.TabIndex = 0;
 			this.BackgroundButton.Text = "Background";
 			this.BackgroundButton.UseVisualStyleBackColor = true;
 			this.BackgroundButton.Click += new System.EventHandler(this.BackgroundButton_Click);
+			// 
+			// FontsPanel
+			// 
+			this.FontsPanel.BackColor = System.Drawing.Color.Black;
+			this.FontsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.FontsPanel.Controls.Add(this.InstallFontButton);
+			this.FontsPanel.Controls.Add(this.BrowseFontsButton);
+			this.FontsPanel.Controls.Add(this.label10);
+			this.FontsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.FontsPanel.Location = new System.Drawing.Point(0, 0);
+			this.FontsPanel.Name = "FontsPanel";
+			this.FontsPanel.Size = new System.Drawing.Size(443, 559);
+			this.FontsPanel.TabIndex = 1;
+			// 
+			// InstallFontButton
+			// 
+			this.InstallFontButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.InstallFontButton.Location = new System.Drawing.Point(238, 59);
+			this.InstallFontButton.Name = "InstallFontButton";
+			this.InstallFontButton.Size = new System.Drawing.Size(150, 25);
+			this.InstallFontButton.TabIndex = 10;
+			this.InstallFontButton.Text = "Install Font";
+			this.InstallFontButton.UseVisualStyleBackColor = true;
+			this.InstallFontButton.Click += new System.EventHandler(this.InstallFontButton_Click);
+			// 
+			// BrowseFontsButton
+			// 
+			this.BrowseFontsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BrowseFontsButton.Location = new System.Drawing.Point(57, 59);
+			this.BrowseFontsButton.Name = "BrowseFontsButton";
+			this.BrowseFontsButton.Size = new System.Drawing.Size(150, 25);
+			this.BrowseFontsButton.TabIndex = 9;
+			this.BrowseFontsButton.Text = "Browse Fonts";
+			this.BrowseFontsButton.UseVisualStyleBackColor = true;
+			this.BrowseFontsButton.Click += new System.EventHandler(this.BrowseFontsButton_Click);
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label10.ForeColor = System.Drawing.Color.White;
+			this.label10.Location = new System.Drawing.Point(168, 7);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(104, 39);
+			this.label10.TabIndex = 5;
+			this.label10.Text = "Fonts";
+			// 
+			// LockScreenPanel
+			// 
+			this.LockScreenPanel.BackColor = System.Drawing.Color.Black;
+			this.LockScreenPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LockScreenPanel.Controls.Add(this.SignInImage);
+			this.LockScreenPanel.Controls.Add(this.LockScreenFacts);
+			this.LockScreenPanel.Controls.Add(this.LockImageButton);
+			this.LockScreenPanel.Controls.Add(this.LockImage);
+			this.LockScreenPanel.Controls.Add(this.label7);
+			this.LockScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.LockScreenPanel.Location = new System.Drawing.Point(0, 0);
+			this.LockScreenPanel.Name = "LockScreenPanel";
+			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
+			this.LockScreenPanel.TabIndex = 1;
+			// 
+			// SignInImage
+			// 
+			this.SignInImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SignInImage.ForeColor = System.Drawing.Color.White;
+			this.SignInImage.Location = new System.Drawing.Point(57, 354);
+			this.SignInImage.Name = "SignInImage";
+			this.SignInImage.Size = new System.Drawing.Size(331, 41);
+			this.SignInImage.TabIndex = 9;
+			this.SignInImage.Text = "Show lock screen background picture on sign-in screen";
+			this.SignInImage.UseVisualStyleBackColor = true;
+			this.SignInImage.CheckedChanged += new System.EventHandler(this.SignInImage_CheckedChanged);
+			// 
+			// LockScreenFacts
+			// 
+			this.LockScreenFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockScreenFacts.ForeColor = System.Drawing.Color.White;
+			this.LockScreenFacts.Location = new System.Drawing.Point(57, 308);
+			this.LockScreenFacts.Name = "LockScreenFacts";
+			this.LockScreenFacts.Size = new System.Drawing.Size(320, 40);
+			this.LockScreenFacts.TabIndex = 8;
+			this.LockScreenFacts.Text = "Get fun facts, tips, tricks, and more on your lock screen";
+			this.LockScreenFacts.UseVisualStyleBackColor = true;
+			this.LockScreenFacts.CheckedChanged += new System.EventHandler(this.LockScreenFacts_CheckedChanged);
+			// 
+			// LockImageButton
+			// 
+			this.LockImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LockImageButton.Location = new System.Drawing.Point(57, 268);
+			this.LockImageButton.Name = "LockImageButton";
+			this.LockImageButton.Size = new System.Drawing.Size(114, 29);
+			this.LockImageButton.TabIndex = 7;
+			this.LockImageButton.Text = "Select Image";
+			this.LockImageButton.UseVisualStyleBackColor = true;
+			this.LockImageButton.Click += new System.EventHandler(this.LockImageButton_Click);
+			// 
+			// LockImage
+			// 
+			this.LockImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+			this.LockImage.InitialImage = null;
+			this.LockImage.Location = new System.Drawing.Point(57, 62);
+			this.LockImage.Name = "LockImage";
+			this.LockImage.Size = new System.Drawing.Size(320, 180);
+			this.LockImage.TabIndex = 6;
+			this.LockImage.TabStop = false;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label7.ForeColor = System.Drawing.Color.White;
+			this.label7.Location = new System.Drawing.Point(115, 5);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(210, 39);
+			this.label7.TabIndex = 3;
+			this.label7.Text = "Lock Screen";
 			// 
 			// ThemesPanel
 			// 
@@ -337,77 +430,6 @@
 			this.label8.Size = new System.Drawing.Size(143, 39);
 			this.label8.TabIndex = 4;
 			this.label8.Text = "Themes";
-			// 
-			// LockScreenPanel
-			// 
-			this.LockScreenPanel.BackColor = System.Drawing.Color.Black;
-			this.LockScreenPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.LockScreenPanel.Controls.Add(this.SignInImage);
-			this.LockScreenPanel.Controls.Add(this.LockScreenFacts);
-			this.LockScreenPanel.Controls.Add(this.LockImageButton);
-			this.LockScreenPanel.Controls.Add(this.LockImage);
-			this.LockScreenPanel.Controls.Add(this.label7);
-			this.LockScreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.LockScreenPanel.Location = new System.Drawing.Point(0, 0);
-			this.LockScreenPanel.Name = "LockScreenPanel";
-			this.LockScreenPanel.Size = new System.Drawing.Size(443, 559);
-			this.LockScreenPanel.TabIndex = 1;
-			// 
-			// SignInImage
-			// 
-			this.SignInImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SignInImage.ForeColor = System.Drawing.Color.White;
-			this.SignInImage.Location = new System.Drawing.Point(57, 354);
-			this.SignInImage.Name = "SignInImage";
-			this.SignInImage.Size = new System.Drawing.Size(331, 41);
-			this.SignInImage.TabIndex = 9;
-			this.SignInImage.Text = "Show lock screen background picture on sign-in screen";
-			this.SignInImage.UseVisualStyleBackColor = true;
-			this.SignInImage.CheckedChanged += new System.EventHandler(this.SignInImage_CheckedChanged);
-			// 
-			// LockScreenFacts
-			// 
-			this.LockScreenFacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LockScreenFacts.ForeColor = System.Drawing.Color.White;
-			this.LockScreenFacts.Location = new System.Drawing.Point(57, 308);
-			this.LockScreenFacts.Name = "LockScreenFacts";
-			this.LockScreenFacts.Size = new System.Drawing.Size(320, 40);
-			this.LockScreenFacts.TabIndex = 8;
-			this.LockScreenFacts.Text = "Get fun facts, tips, tricks, and more on your lock screen";
-			this.LockScreenFacts.UseVisualStyleBackColor = true;
-			this.LockScreenFacts.CheckedChanged += new System.EventHandler(this.LockScreenFacts_CheckedChanged);
-			// 
-			// LockImageButton
-			// 
-			this.LockImageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LockImageButton.Location = new System.Drawing.Point(57, 268);
-			this.LockImageButton.Name = "LockImageButton";
-			this.LockImageButton.Size = new System.Drawing.Size(114, 29);
-			this.LockImageButton.TabIndex = 7;
-			this.LockImageButton.Text = "Select Image";
-			this.LockImageButton.UseVisualStyleBackColor = true;
-			this.LockImageButton.Click += new System.EventHandler(this.LockImageButton_Click);
-			// 
-			// LockImage
-			// 
-			this.LockImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-			this.LockImage.InitialImage = null;
-			this.LockImage.Location = new System.Drawing.Point(57, 62);
-			this.LockImage.Name = "LockImage";
-			this.LockImage.Size = new System.Drawing.Size(320, 180);
-			this.LockImage.TabIndex = 6;
-			this.LockImage.TabStop = false;
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.ForeColor = System.Drawing.Color.White;
-			this.label7.Location = new System.Drawing.Point(115, 5);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(210, 39);
-			this.label7.TabIndex = 3;
-			this.label7.Text = "Lock Screen";
 			// 
 			// ColorsPanel
 			// 
@@ -656,71 +678,6 @@
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Background";
 			// 
-			// FontsPanel
-			// 
-			this.FontsPanel.BackColor = System.Drawing.Color.Black;
-			this.FontsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.FontsPanel.Controls.Add(this.InstallFontButton);
-			this.FontsPanel.Controls.Add(this.BrowseFontsButton);
-			this.FontsPanel.Controls.Add(this.label10);
-			this.FontsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.FontsPanel.Location = new System.Drawing.Point(0, 0);
-			this.FontsPanel.Name = "FontsPanel";
-			this.FontsPanel.Size = new System.Drawing.Size(443, 559);
-			this.FontsPanel.TabIndex = 1;
-			// 
-			// TaskbarPanel
-			// 
-			this.TaskbarPanel.BackColor = System.Drawing.Color.Black;
-			this.TaskbarPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.TaskbarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.TaskbarPanel.Location = new System.Drawing.Point(0, 0);
-			this.TaskbarPanel.Name = "TaskbarPanel";
-			this.TaskbarPanel.Size = new System.Drawing.Size(443, 559);
-			this.TaskbarPanel.TabIndex = 1;
-			// 
-			// StartPanel
-			// 
-			this.StartPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.StartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.StartPanel.Location = new System.Drawing.Point(0, 0);
-			this.StartPanel.Name = "StartPanel";
-			this.StartPanel.Size = new System.Drawing.Size(443, 559);
-			this.StartPanel.TabIndex = 1;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.ForeColor = System.Drawing.Color.White;
-			this.label10.Location = new System.Drawing.Point(168, 7);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(104, 39);
-			this.label10.TabIndex = 5;
-			this.label10.Text = "Fonts";
-			// 
-			// BrowseFontsButton
-			// 
-			this.BrowseFontsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.BrowseFontsButton.Location = new System.Drawing.Point(57, 59);
-			this.BrowseFontsButton.Name = "BrowseFontsButton";
-			this.BrowseFontsButton.Size = new System.Drawing.Size(150, 25);
-			this.BrowseFontsButton.TabIndex = 9;
-			this.BrowseFontsButton.Text = "Browse Fonts";
-			this.BrowseFontsButton.UseVisualStyleBackColor = true;
-			this.BrowseFontsButton.Click += new System.EventHandler(this.BrowseFontsButton_Click);
-			// 
-			// InstallFontButton
-			// 
-			this.InstallFontButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.InstallFontButton.Location = new System.Drawing.Point(238, 59);
-			this.InstallFontButton.Name = "InstallFontButton";
-			this.InstallFontButton.Size = new System.Drawing.Size(150, 25);
-			this.InstallFontButton.TabIndex = 10;
-			this.InstallFontButton.Text = "Install Font";
-			this.InstallFontButton.UseVisualStyleBackColor = true;
-			this.InstallFontButton.Click += new System.EventHandler(this.InstallFontButton_Click);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,12 +694,14 @@
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			this.ThemesPanel.ResumeLayout(false);
-			this.ThemesPanel.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ThemeImage)).EndInit();
+			this.FontsPanel.ResumeLayout(false);
+			this.FontsPanel.PerformLayout();
 			this.LockScreenPanel.ResumeLayout(false);
 			this.LockScreenPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.LockImage)).EndInit();
+			this.ThemesPanel.ResumeLayout(false);
+			this.ThemesPanel.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ThemeImage)).EndInit();
 			this.ColorsPanel.ResumeLayout(false);
 			this.ColorsPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ColorImage)).EndInit();
@@ -751,8 +710,6 @@
 			this.BackgroundPanel.ResumeLayout(false);
 			this.BackgroundPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.WallpaperImage)).EndInit();
-			this.FontsPanel.ResumeLayout(false);
-			this.FontsPanel.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -765,13 +722,9 @@
 		private System.Windows.Forms.Button LockScreenButton;
 		private System.Windows.Forms.Button ThemesButton;
 		private System.Windows.Forms.Button FontsButton;
-		private System.Windows.Forms.Button StartButton;
-		private System.Windows.Forms.Button TaskbarButton;
 		private System.Windows.Forms.Button ExperimentalButton;
 		private System.Windows.Forms.Panel ExperimentalPanel;
 		private System.Windows.Forms.Button DisableWatermarkButton;
-		private System.Windows.Forms.Panel TaskbarPanel;
-		private System.Windows.Forms.Panel StartPanel;
 		private System.Windows.Forms.Panel FontsPanel;
 		private System.Windows.Forms.Panel ThemesPanel;
 		private System.Windows.Forms.Panel LockScreenPanel;

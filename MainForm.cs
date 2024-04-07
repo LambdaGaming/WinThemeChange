@@ -117,8 +117,6 @@ namespace WinThemeChange
 
 		#region LeftSide
 		private void ExperimentalButton_Click( object sender, EventArgs e ) => ExperimentalPanel.BringToFront();
-		private void TaskbarButton_Click( object sender, EventArgs e ) => TaskbarPanel.BringToFront();
-		private void StartButton_Click( object sender, EventArgs e ) => StartPanel.BringToFront();
 		private void FontsButton_Click( object sender, EventArgs e ) => FontsPanel.BringToFront();
 		private void ThemesButton_Click( object sender, EventArgs e ) => ThemesPanel.BringToFront();
 		private void LockScreenButton_Click( object sender, EventArgs e ) => LockScreenPanel.BringToFront();
